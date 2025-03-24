@@ -222,14 +222,33 @@ echo ("<br>user info: " . htmlspecialchars($userinfo[0]['email']));
     $data = json_decode($response, true);
 
     // Display random cat fact
-    echo "Cat Fact: " . $data['fact'];
+    // echo "Cat Fact: " . $data['fact'];
     ?>
 
+    <!-- // reload for cat fact -->
+    <!-- // display cat fact -->
+    <p id="catFact">Cat Fact that you should know</p>
+    <button id="catFactButton">Click for Cat Fact</button>
 
+    <script>
+        const catFactButton = document.getElementById("catFactButton");
+        catFactButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch("https://catfact.ninja/fact");
+                const data = await response.json();
+                console.log(data);
 
+                const catFact = data.fact;
+                const catFactElement = document.getElementById("catFact");
 
+                // Generate Display and Render the Jokes 
+                catFactElement.innerHTML = `Cat Fact: ${catFact}`;
 
-
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
 
 
 
