@@ -25,7 +25,7 @@ $notes = $stmt->fetchAll();
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $userinfo = $stmt->fetchAll();
-echo ("<br>user info: " . htmlspecialchars($userinfo[0]['email']));
+// echo ("<br>user info: " . htmlspecialchars($userinfo[0]['email']));
 
 ?>
 
@@ -47,6 +47,9 @@ echo ("<br>user info: " . htmlspecialchars($userinfo[0]['email']));
 </head>
 
 <body>
+    
+    <?php include('components/navbar.php'); ?>
+    
     <h2>Welcome, <?php echo $_SESSION['user']; ?>!</h2>
 
     <!-- <h3>Your email is: <?php echo $userinfo['email']; ?></h3>
@@ -66,23 +69,26 @@ echo ("<br>user info: " . htmlspecialchars($userinfo[0]['email']));
 
 
     <!-- Add note == [POST] -->
-    <h3>Add Note</h3>
-    <form action="../../backend/controllers/notesController.php" method="POST">
-        <input type="text" name="title" placeholder="Title" required><br>
-        <!-- <input type="text" name="notetype" placeholder="Note Type" required><br> -->
-        <select name="notetype" required>
-            <option value="">Select Programming Language</option>
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="Javascript">JavaScript</option>
-            <option value="Reactjs">Reactjs</option>
-            <option value="Nodejs">Nodejs</option>
-            <option value="PHP">PHP</option>
-            <option value="Laravel">Laravel</option>
-        </select><br>
-        <textarea name="comment" placeholder="Comment" required></textarea><br>
-        <button type="submit" name="add_note">Add Note</button>
-    </form>
+    <div class="container-fluid">
+        <h3>Add Note</h3>
+        <form action="../../backend/controllers/notesController.php" method="POST">
+            <input class="form-control" type="text" name="title" placeholder="Title" required><br>
+
+            <!-- <input type="text" name="notetype" placeholder="Note Type" required><br> -->
+            <select class="form-select" aria-label="Default select example" name="notetype" required>
+                <option value="">Select Programming Language</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="Javascript">JavaScript</option>
+                <option value="Reactjs">Reactjs</option>
+                <option value="Nodejs">Nodejs</option>
+                <option value="PHP">PHP</option>
+                <option value="Laravel">Laravel</option>
+            </select><br>
+            <textarea class="form-control" name="comment" placeholder="Comment" required></textarea><br>
+            <button type="submit" name="add_note">Add Note</button>
+        </form>
+    </div>
 
 
     <?php
