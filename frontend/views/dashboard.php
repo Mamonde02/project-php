@@ -47,29 +47,21 @@ $userinfo = $stmt->fetchAll();
 </head>
 
 <body>
-    
+
     <?php include('components/navbar.php'); ?>
-    
-    <h2>Welcome, <?php echo $_SESSION['user']; ?>!</h2>
+
+    <!-- <h2>Welcome, <?php echo $_SESSION['user']; ?>!</h2> -->
 
     <!-- <h3>Your email is: <?php echo $userinfo['email']; ?></h3>
     <h3>Your email is: <?php echo $userinfo['email']; ?></h3> -->
 
-    <h4>Personal Email Account, <?php echo $_SESSION['useremail']; ?></h4>
-    <h4>User ID, <?php echo $_SESSION['user_id']; ?></h4>
-
-    <a href="joke.php">Joke Page</a>
-    <br>
-    <a href="../../logout.php">Logout</a>
-    <br>
-    <!-- <a href="../logout.php">Correct! Logout</a> -->
-
-    <!-- problem solved -->
-    <a href="/php-auth/frontend/logout.php">Final Logout</a>
+    <!-- <h4>Personal Email Account, <?php echo $_SESSION['useremail']; ?></h4> -->
+    <!-- <h4>User ID, <?php echo $_SESSION['user_id']; ?></h4> -->
 
 
     <!-- Add note == [POST] -->
     <div class="container-fluid">
+        <br>
         <h3>Add Note</h3>
         <form action="../../backend/controllers/notesController.php" method="POST">
             <input class="form-control" type="text" name="title" placeholder="Title" required><br>
@@ -120,37 +112,41 @@ $userinfo = $stmt->fetchAll();
 
     <!-- Display notes -->
     <h3>Your Notes</h3>
-    <table border="1">
-        <tr>
-            <th>Title</th>
-            <th>Note Type</th>
-            <th>Comment</th>
-            <th>Action</th>
-        </tr>
-        <?php foreach ($notes as $note): ?>
+    <table class="table">
+        <thead class="table-warning">
             <tr>
-                <td><?php echo htmlspecialchars($note['title']); ?></td>
-                <td><?php echo htmlspecialchars($note['notetype']); ?></td>
-                <td><?php echo htmlspecialchars($note['comment']); ?></td>
-                <td>
+                <th>Title</th>
+                <th>Note Type</th>
+                <th>Comment</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <?php foreach ($notes as $note): ?>
+            <tbody class="table-info">
+                <tr>
+                    <td><?php echo htmlspecialchars($note['title']); ?></td>
+                    <td><?php echo htmlspecialchars($note['notetype']); ?></td>
+                    <td><?php echo htmlspecialchars($note['comment']); ?></td>
+                    <td>
 
-                    <!-- Delete Form -->
-                    <form action="../../backend/controllers/notesController.php" method="POST">
-                        <input type="hidden" name="note_id" value="<?php echo $note['id']; ?>">
-                        <button class="buttonDelete" type="submit" name="delete_note">Delete</button>
-                    </form>
+                        <!-- Delete Form -->
+                        <form action="../../backend/controllers/notesController.php" method="POST">
+                            <input type="hidden" name="note_id" value="<?php echo $note['id']; ?>">
+                            <button class="buttonDelete" type="submit" name="delete_note">Delete</button>
+                        </form>
 
-                    <!-- Update Button (Opens Update Form) -->
-                    <button
-                        onclick="openUpdateForm(<?php echo $note['id']; ?>, 
+                        <!-- Update Button (Opens Update Form) -->
+                        <button
+                            onclick="openUpdateForm(<?php echo $note['id']; ?>, 
                         '<?php echo htmlspecialchars($note['title']); ?>', 
                         '<?php echo htmlspecialchars($note['notetype']); ?>', 
                         '<?php echo htmlspecialchars($note['comment']); ?>')">
-                        Update
-                    </button>
+                            Update
+                        </button>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            </tbody>
         <?php endforeach; ?>
     </table>
 
@@ -164,7 +160,7 @@ $userinfo = $stmt->fetchAll();
             <input type="text" name="notetype" id="notetype" placeholder="Note Type" required><br>
             <textarea name="comment" id="comment" placeholder="Comment" required></textarea><br>
             <button type="submit" name="update_note">Update Note</button>
-            <button type="button" onclick="document.getElementById('updateForm').style.display = 'none'">Cancel</button>
+            <button class="buttonDelete" type="button" onclick="document.getElementById('updateForm').style.display = 'none'">Cancel</button>
         </form>
     </div>
 
