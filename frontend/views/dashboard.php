@@ -78,7 +78,7 @@ $userinfo = $stmt->fetchAll();
                 <option value="Laravel">Laravel</option>
             </select><br>
             <textarea class="form-control" name="comment" placeholder="Comment" required></textarea><br>
-            <button type="submit" name="add_note">Add Note</button>
+            <button class="buttonDesign" type="submit" name="add_note">Add Note</button>
         </form>
     </div>
 
@@ -137,6 +137,7 @@ $userinfo = $stmt->fetchAll();
 
                         <!-- Update Button (Opens Update Form) -->
                         <button
+                            class="buttonDesign"
                             onclick="openUpdateForm(<?php echo $note['id']; ?>, 
                         '<?php echo htmlspecialchars($note['title']); ?>', 
                         '<?php echo htmlspecialchars($note['notetype']); ?>', 
@@ -237,6 +238,7 @@ $userinfo = $stmt->fetchAll();
 
     <!-- <p id="catFact">Cat Fact that you should know</p> -->
     <button
+        class="buttonDesign"
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop">
@@ -255,7 +257,7 @@ $userinfo = $stmt->fetchAll();
                     Are you a cat lover? 😸😸🐱🐈🐈‍⬛
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nah😾</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Nah😾</button>
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="catFactButton">Of Course meow!😻</button>
                 </div>
             </div>
@@ -336,7 +338,7 @@ $userinfo = $stmt->fetchAll();
 
 
     /* From Uiverse.io by adamgiebl */
-    button {
+    .buttonDesign {
         background: #fbca1f;
         font-family: inherit;
         padding: 0.6em 1.3em;
@@ -360,12 +362,12 @@ $userinfo = $stmt->fetchAll();
         cursor: pointer;
     }
 
-    button:hover {
+    .buttonDesign:hover {
         transform: translate(-0.05em, -0.05em);
         box-shadow: 0.15em 0.15em;
     }
 
-    button:active {
+    .buttonDesign:active {
         transform: translate(0.05em, 0.05em);
         box-shadow: 0.05em 0.05em;
     }
