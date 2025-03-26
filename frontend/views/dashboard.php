@@ -236,7 +236,31 @@ $userinfo = $stmt->fetchAll();
     </div>
 
     <!-- <p id="catFact">Cat Fact that you should know</p> -->
-    <button id="catFactButton">Click for Cat Fact</button>
+    <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+        Click for Cat Fact
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cat Confirmation Message🙀</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you a cat lover? 😸😸🐱🐈🐈‍⬛
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nah😾</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="catFactButton">Of Course meow!😻</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         const catFactButton = document.getElementById("catFactButton");
