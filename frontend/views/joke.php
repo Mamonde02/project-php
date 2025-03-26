@@ -19,46 +19,47 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 
 <body>
+    <?php include('components/sidebar.php'); ?>
 
-    <h2>Joke</h2>
-    <h3>Joke of the Day</h3>
-    <!-- <button id="jokeButton">Get Joke</button> -->
-    <!-- refresh the page refer to get a new joke "joke" element -->
-    <!-- <p id="joke"></p>
+    <div class="content">
+        <!-- <button id="jokeButton">Get Joke</button> -->
+        <!-- refresh the page refer to get a new joke "joke" element -->
+        <!-- <p id="joke"></p>
+        
+        <p id="error"></p>
+        <p id="category"></p>
+        <p id="setup"></p>
+        <p id="delivery"></p>
+        <p id="type"></p>
+        <p id="id"></p> -->
 
-    <p id="error"></p>
-    <p id="category"></p>
-    <p id="setup"></p>
-    <p id="delivery"></p>
-    <p id="type"></p>
-    <p id="id"></p> -->
 
+        <!-- From Uiverse.io by Yaya12085 -->
+        <div class="card">
+            <div class="header"></div>
+            <div class="info">
+                <p class="title">Joke of the Day?</p>
+                <p id="joke">Waiting for a Joke</p>
 
-    <!-- From Uiverse.io by Yaya12085 -->
-    <div class="card">
-        <div class="header"></div>
-        <div class="info">
-            <p class="title">Joke of the Day?</p>
-            <p id="joke">Waiting for a Joke</p>
+                <!-- <p id="error"></p> -->
+                <!-- <p id="category"></p> -->
+                <p id="setup"></p>
+                <p id="delivery"></p>
+                <p id="type"></p>
+                <p id="id"></p>
 
-            <!-- <p id="error"></p> -->
-            <!-- <p id="category"></p> -->
-            <p id="setup"></p>
-            <p id="delivery"></p>
-            <p id="type"></p>
-            <p id="id"></p>
+            </div>
+            <div class="footer">
+                <!-- <p class="tag">#HTML #CSS </p> -->
+                <p class="tag" id="category"></p>
 
-        </div>
-        <div class="footer">
-            <!-- <p class="tag">#HTML #CSS </p> -->
-            <p class="tag" id="category"></p>
-
-            <button
-                type="button"
-                class="action"
-                id="jokeButton">
-                Click me for joke
-            </button>
+                <button
+                    type="button"
+                    class="action"
+                    id="jokeButton">
+                    Click me for joke
+                </button>
+            </div>
         </div>
     </div>
 
@@ -180,6 +181,13 @@ if (!isset($_SESSION['user_id'])) {
         background-color: rgb(33 150 243);
         border-radius: 0.5rem;
         cursor: pointer;
+    }
+
+    .content {
+        margin-left: 250px;
+        margin-top: 60px;
+        padding: 20px;
+        width: calc(100% - 250px);
     }
 </style>
 
