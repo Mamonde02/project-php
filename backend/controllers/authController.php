@@ -33,6 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         $_SESSION['user'] = $user['username']; // store username in session
         $_SESSION['useremail'] = $user['email']; // store email in session
 
+        // ✅ Set toast message
+        $_SESSION['toast_message'] = "Welcome to Homepage Dashboard, " . $user['username'] . "!";
+
         header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
