@@ -13,7 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         header("Location: ../../frontend/views/login.php");
         exit();
     } else {
-        echo "Signup failed!";
+        // echo "Signup failed!";
+        echo "<script>alert('Singup failed!'); window.location.href='../../frontend/views/signup.php';</script>";
     }
 }
 
@@ -35,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
-        echo "Invalid credentials!";
+        // echo "Invalid credentials!";
+        echo "<script>alert('Invalid credentials!'); window.location.href='../../frontend/views/login.php';</script>";
     }
 }
