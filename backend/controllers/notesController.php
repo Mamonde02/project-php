@@ -67,8 +67,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_note'])) {
     if ($stmt->execute([$user_id, $title, $notetype, $comment])) {
         // header("Location: ../../frontend/views/dashboard.php");
 
-        $msg_success = "Note added successfully.";
-        header("Location: ../../frontend/views/dashboard.php?msg_success=" . urlencode($msg_success));
+        // $msg_success = "Note added successfully.";
+        // header("Location: ../../frontend/views/dashboard.php?msg_success=" . urlencode($msg_success));
+        // exit();
+
+        // Set alert message
+        $_SESSION['alert_message'] = "Note added successfully!";
+        $_SESSION['alert_type'] = "success"; // Bootstrap alert color
+
+        // Redirect back to the dashboard
+        header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
         echo "Failed to add note!";
@@ -83,8 +91,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_note'])) {
     if ($stmt->execute([$note_id])) {
         // header("Location: ../../frontend/views/dashboard.php");
 
-        $msg_fail = "Note is deleted successfully.";
-        header("Location: ../../frontend/views/dashboard.php?msg_fail=" . urlencode($msg_fail));
+        // $msg_fail = "Note is deleted successfully.";
+        // header("Location: ../../frontend/views/dashboard.php?msg_fail=" . urlencode($msg_fail));
+        // exit();
+
+        // Set alert message
+        $_SESSION['alert_message'] = "Note deleted successfully!";
+        $_SESSION['alert_type'] = "danger"; // Bootstrap alert color
+
+        // Redirect back to the dashboard
+        header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
         echo "Failed to delete note!";
@@ -103,8 +119,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_note'])) {
     if ($stmt->execute([$title, $notetype, $comment, $note_id])) {
         // header("Location: ../../frontend/views/dashboard.php");
 
-        $msg = "Note is updated successfully.";
-        header("Location: ../../frontend/views/dashboard.php?msg=" . urlencode($msg));
+        // $msg = "Note is updated successfully.";
+        // header("Location: ../../frontend/views/dashboard.php?msg=" . urlencode($msg));
+        // exit();
+
+        // Set alert message
+        $_SESSION['alert_message'] = "Note updated successfully!";
+        $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
+
+        // Redirect back to the dashboard
+        header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
         echo "Failed to update note!";
