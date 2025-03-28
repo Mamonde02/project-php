@@ -79,7 +79,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_note'])) {
         header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
-        echo "Failed to add note!";
+        // echo "Failed to add note!";
+        // echo "<script>alert('Failed to add note!'); window.location.href='../../frontend/views/dashboard.php';</script>";
+
+        $_SESSION['alert_message'] = "Failed to add note!";
+        $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
+        header("Location: ../../frontend/views/dashboard.php");
+        exit();
     }
 }
 
@@ -103,7 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_note'])) {
         header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
-        echo "Failed to delete note!";
+        // echo "Failed to delete note!";
+        // echo "<script>alert('Failed to delete note!'); window.location.href='../../frontend/views/dashboard.php';</script>";
+
+        $_SESSION['alert_message'] = "Failed to delete note!";
+        $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
+        header("Location: ../../frontend/views/dashboard.php");
+        exit();
     }
 }
 
@@ -131,6 +143,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_note'])) {
         header("Location: ../../frontend/views/dashboard.php");
         exit();
     } else {
-        echo "Failed to update note!";
+        // echo "Failed to update note!";
+        // echo "<script>alert('Failed to update note!'); window.location.href='../../frontend/views/dashboard.php';</script>";
+
+        $_SESSION['alert_message'] = "Failed to update note!";
+        $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
+        header("Location: ../../frontend/views/dashboard.php");
+        exit();
     }
 }
