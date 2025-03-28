@@ -188,7 +188,7 @@ $userinfo = $stmt->fetchAll();
             <input type="text" name="title" id="title" placeholder="Title" required><br>
             <input type="text" name="notetype" id="notetype" placeholder="Note Type" required><br>
             <textarea name="comment" id="comment" placeholder="Comment" required></textarea><br>
-            <button type="submit" name="update_note">Update Note</button>
+            <button class="buttonDesign" type="submit" name="update_note">Update Note</button>
             <button class="buttonDelete" type="button" onclick="document.getElementById('updateForm').style.display = 'none'">Cancel</button>
         </form>
     </div>
