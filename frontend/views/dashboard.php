@@ -196,7 +196,17 @@ $userinfo = $stmt->fetchAll();
                     <form action="../../backend/controllers/notesController.php" method="POST">
                         <input type="hidden" name="note_id" id="noteId">
                         <input class="form-control" type="text" name="title" id="title" placeholder="Title" required><br>
-                        <input class="form-control" type="text" name="notetype" id="notetype" placeholder="Note Type" required><br>
+                        <!-- <input class="form-control" type="text" name="notetype" id="notetype" placeholder="Note Type" required><br> -->
+                        <select class="form-select" aria-label="Default select example" name="notetype" id="notetype" required>
+                            <option value="">Select Programming Language</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="Javascript">JavaScript</option>
+                            <option value="Reactjs">Reactjs</option>
+                            <option value="Nodejs">Nodejs</option>
+                            <option value="PHP">PHP</option>
+                            <option value="Laravel">Laravel</option>
+                        </select><br>
                         <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br>
                         <button class="buttonDesign" type="submit" name="update_note">Update Note</button>
                     </form>
