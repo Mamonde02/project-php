@@ -166,6 +166,9 @@ $userinfo = $stmt->fetchAll();
                         <!-- Update Button (Opens Update Form) -->
                         <button
                             class="buttonDesign"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#updateModal"
                             onclick="openUpdateForm(<?php echo $note['id']; ?>, 
                         '<?php echo htmlspecialchars($note['title']); ?>', 
                         '<?php echo htmlspecialchars($note['notetype']); ?>', 
@@ -181,16 +184,41 @@ $userinfo = $stmt->fetchAll();
 
 
     <!-- Update Form -->
-    <div id="updateForm" style="display: none;">
-        <h3>Update Note</h3>
-        <form action="../../backend/controllers/notesController.php" method="POST">
-            <input type="hidden" name="note_id" id="noteId">
-            <input type="text" name="title" id="title" placeholder="Title" required><br>
-            <input type="text" name="notetype" id="notetype" placeholder="Note Type" required><br>
-            <textarea name="comment" id="comment" placeholder="Comment" required></textarea><br>
-            <button class="buttonDesign" type="submit" name="update_note">Update Note</button>
-            <button class="buttonDelete" type="button" onclick="document.getElementById('updateForm').style.display = 'none'">Cancel</button>
-        </form>
+    <!-- modal bootstrap initial -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="../../backend/controllers/notesController.php" method="POST">
+                        <input type="hidden" name="note_id" id="updateNoteId">
+                        <input class="form-control" type="text" name="title" id="updateTitle" placeholder="Title" required><br>
+                        <input class="form-control" type="text" name="notetype" id="updateNotetype" placeholder="Note Type" required><br>
+                        <textarea class="form-control" name="comment" id="updateComment" placeholder="Comment" required></textarea><br>
+                        <button class="buttonDesign" type="submit" name="update_note">Update Note</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid">
+        <div id="updateForm" style="display: none;">
+            <h3>Update Note</h3>
+            <form action="../../backend/controllers/notesController.php" method="POST">
+                <input type="hidden" name="note_id" id="noteId">
+                <input class="form-control" type="text" name="title" id="title" placeholder="Title" required><br>
+                <input class="form-control" type="text" name="notetype" id="notetype" placeholder="Note Type" required><br>
+                <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br>
+                <button class="buttonDesign" type="submit" name="update_note">Update Note</button>
+                <button class="buttonDelete" type="button" onclick="document.getElementById('updateForm').style.display = 'none'">Cancel</button>
+            </form>
+        </div>
     </div>
 
 
