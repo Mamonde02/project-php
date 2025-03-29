@@ -194,10 +194,10 @@ $userinfo = $stmt->fetchAll();
                 </div>
                 <div class="modal-body">
                     <form action="../../backend/controllers/notesController.php" method="POST">
-                        <input type="hidden" name="note_id" id="updateNoteId">
-                        <input class="form-control" type="text" name="title" id="updateTitle" placeholder="Title" required><br>
-                        <input class="form-control" type="text" name="notetype" id="updateNotetype" placeholder="Note Type" required><br>
-                        <textarea class="form-control" name="comment" id="updateComment" placeholder="Comment" required></textarea><br>
+                        <input type="hidden" name="note_id" id="noteId">
+                        <input class="form-control" type="text" name="title" id="title" placeholder="Title" required><br>
+                        <input class="form-control" type="text" name="notetype" id="notetype" placeholder="Note Type" required><br>
+                        <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br>
                         <button class="buttonDesign" type="submit" name="update_note">Update Note</button>
                     </form>
                 </div>
