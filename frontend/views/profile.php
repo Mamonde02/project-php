@@ -58,7 +58,86 @@ if (!$userinfo) {
         <a href="logout.php" class="btn btn-danger">Logout</a>
         <a href="dashboard.php" class="btn btn-primary">Dashboard</a>
 
+        <!-- Update Button modal for Update User profile (Opens Update Form) button -->
+        <button
+            type="button"
+            class="btn btn-warning"
+            data-bs-toggle="modal"
+            data-bs-target="#updateModal"
+            onclick="openUpdateForm( 
+            '<?php echo htmlspecialchars($userinfo['id']); ?>',
+            '<?php echo htmlspecialchars($userinfo['username']); ?>', 
+            '<?php echo htmlspecialchars($userinfo['email']); ?>')">
+            Update Profile
+        </button>
+
+
+
     </div>
+
+
+
+    <div class="container mt-4">
+        <h1>Update Profile</h1>
+
+        <!-- Display success or error messages -->
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?php echo $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
+                <?php echo $_SESSION['message']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php unset($_SESSION['message'], $_SESSION['message_type']); ?>
+        <?php endif; ?>
+
+
+        <!-- Profile Update Form -->
+        <form action="../../backend/controllers/authController.php" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($userinfo['username']); ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($userinfo['email']); ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">New Password (leave blank to keep current password)</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
+        </form>
+    </div>
+
+
+
+
+    <!-- Update Form -->
+    <!-- modal bootstrap initial -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="../../backend/controllers/usersController.php" method="POST">
+                        <input type="hidden" name="id" id="id">
+                        <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
+
+                        <input class="form-control" type="text" name="username" id="username" placeholder="Username" required><br>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Email" required><br>
+
+                        <!-- <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br> -->
+                        <button class="buttonDesign" type="submit" name="update_profile">Update Note</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
