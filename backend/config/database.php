@@ -1,11 +1,11 @@
 <?php
 $host = "localhost";
 $dbname = "auth_system";
-$username = "root";
-$password = "valeroso";
+$dbusername = "root";
+$dbpassword = "valeroso";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "✅ Server is running: Database connected successfully!";
 } catch (PDOException $e) {
