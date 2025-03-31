@@ -43,3 +43,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         echo "<script>alert('Invalid credentials!'); window.location.href='../../frontend/views/login.php';</script>";
     }
 }
+
+// UPDATE USER PROFILE
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
+
+    $user_id = $_SESSION['user_id'];
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    try {
+        // Check if the email is already taken by another user
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
+        $stmt->execute([$email, $user_id]);
+        if ($stmt->fetch()) {
+            $_SESSION['message'] = "Email is already in use by another account.";
+            $_SESSION['message_type'] = "danger";
+            header("Location: ../../frontend/views/profile.php");
+            exit();
+        }
+
+        // Update user information
+        if ($password) {
+            $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?");
+            $stmt->execute([$username, $email, $password, $user_id]);
+        } else {
+            $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
+            $stmt->execute([$username, $email, $user_id]);
+        }
+
+        // Update session variables
+        $_SESSION['user'] = $username;
+        $_SESSION['useremail'] = $email;
+
+        $_SESSION['message'] = "Profile updated successfully!";
+        $_SESSION['message_type'] = "success";
+        header("Location: ../../frontend/views/profile.php");
+        exit();
+    } catch (PDOException $e) {
+        $_SESSION['message'] = "An error occurred: " . $e->getMessage();
+        $_SESSION['message_type'] = "danger";
+        header("Location: ../../frontend/views/profile.php");
+        exit();
+    }
+}
