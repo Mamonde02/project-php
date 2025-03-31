@@ -125,16 +125,18 @@ if (!$userinfo) {
                 </div>
                 <div class="modal-body">
                     <form action="../../backend/controllers/authController.php" method="POST">
-                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="id" id="id" value="<?php echo htmlspecialchars($userinfo['id']); ?>">
                         <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
 
                         <input class="form-control" type="text" name="username" id="username" placeholder="Username"
                             value="<?php echo htmlspecialchars($userinfo['username']); ?>" required><br>
                         <input class="form-control" type="email" name="email" id="email" placeholder="Email"
                             value="<?php echo htmlspecialchars($userinfo['email']); ?>" required><br>
+                        <input class="form-control" type="password" name="password" id="password"
+                            placeholder="New Password (leave blank to keep current password)"><br>
 
                         <!-- <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br> -->
-                        <button class="buttonDesign" type="submit" name="update_profile">Update Note</button>
+                        <button class="btn btn-success" type="submit" name="update_profile">Update Profile</button>
                     </form>
                 </div>
             </div>
