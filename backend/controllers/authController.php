@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
     $user_id = $_SESSION['user_id'];
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
-    // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     try {
         // Check if the email is already taken by another user
