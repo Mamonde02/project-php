@@ -94,11 +94,13 @@ if (!$userinfo) {
         <form action="../../backend/controllers/authController.php" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($userinfo['username']); ?>" required>
+                <input type="text" class="form-control" id="username" name="username"
+                    value="<?php echo htmlspecialchars($userinfo['username']); ?>" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($userinfo['email']); ?>" required>
+                <input type="email" class="form-control" id="email" name="email"
+                    value="<?php echo htmlspecialchars($userinfo['email']); ?>" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">New Password (leave blank to keep current password)</label>
@@ -107,6 +109,7 @@ if (!$userinfo) {
             <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
         </form>
     </div>
+
 
 
 
@@ -121,12 +124,14 @@ if (!$userinfo) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../../backend/controllers/usersController.php" method="POST">
+                    <form action="../../backend/controllers/authController.php" method="POST">
                         <input type="hidden" name="id" id="id">
                         <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
 
-                        <input class="form-control" type="text" name="username" id="username" placeholder="Username" required><br>
-                        <input class="form-control" type="email" name="email" id="email" placeholder="Email" required><br>
+                        <input class="form-control" type="text" name="username" id="username" placeholder="Username"
+                            value="<?php echo htmlspecialchars($userinfo['username']); ?>" required><br>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Email"
+                            value="<?php echo htmlspecialchars($userinfo['email']); ?>" required><br>
 
                         <!-- <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br> -->
                         <button class="buttonDesign" type="submit" name="update_profile">Update Note</button>
@@ -136,6 +141,14 @@ if (!$userinfo) {
         </div>
     </div>
 
+    <script>
+        function openUpdateForm(id, username, email) {
+            // Set values in the input fields inside the modal
+            document.getElementById("id").value = id;
+            document.getElementById("username").value = username;
+            document.getElementById("email").value = email;
+        }
+    </script>
 
 
 
