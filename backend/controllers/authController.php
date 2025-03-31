@@ -75,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
         // Update session variables
         $_SESSION['user'] = $username;
         $_SESSION['useremail'] = $email;
+        $_SESSION['password'] = $password;
 
         $_SESSION['message'] = "Profile updated successfully!";
         $_SESSION['message_type'] = "success";
