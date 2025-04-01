@@ -48,6 +48,7 @@
             <a href="dashboard.php">Dashboard</a>
             <a href="joke.php">Jokes</a>
             <a href="profile.php">Profile</a>
+            <a href="chat.php">Chat</a>
         </div>
         <div>
             <?php if (isset($_SESSION['user'])): ?>
