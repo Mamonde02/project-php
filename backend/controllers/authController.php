@@ -40,7 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         exit();
     } else {
         // echo "Invalid credentials!";
-        echo "<script>alert('Invalid credentials!'); window.location.href='../../frontend/views/login.php';</script>";
+        // echo "<script>alert('Invalid credentials!'); window.location.href='../../frontend/views/login.php';</script>";
+
+        $_SESSION['message'] = "Invalid credentials.";
+        $_SESSION['message_type'] = "danger";
+        header("Location: ../../frontend/views/login.php");
+        exit();
     }
 }
 
