@@ -6,15 +6,20 @@ require_once "../config/database.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $confirm_password = password_hash($_POST['confirm_password'], PASSWORD_DEFAULT);
+    // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    // $confirm_password = password_hash($_POST['confirm_password'], PASSWORD_DEFAULT);
 
-    if ($password !== $confirm_password) {
+    $password_raw = $_POST['password'];
+    $confirm_password_raw = $_POST['confirm_password'];
+
+    if ($password_raw !== $confirm_password_raw) {
         // echo "Passwords do not match!";
         echo "<script>alert('Passwords do not match!'); window.location.href='../../frontend/views/signup.php';</script>";
         exit();
     }
 
+    // Hash only after confirmation
+    $password = password_hash($password_raw, PASSWORD_DEFAULT);
 
     $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
     if ($stmt->execute([$username, $email, $password])) {
