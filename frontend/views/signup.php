@@ -42,7 +42,7 @@
         </label>
 
         <label>
-            <input required="" placeholder="" type="password" class="input">
+            <input required="" placeholder="" type="password" name="password" class="input">
             <span>Password</span>
         </label>
         <label>
