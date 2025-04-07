@@ -46,7 +46,7 @@
             <span>Password</span>
         </label>
         <label>
-            <input required="" placeholder="" type="password" name="password" class="input">
+            <input required="" placeholder="" type="password" name="confirm_password" class="input">
             <span>Confirm password</span>
         </label>
         <button name="signup" class="submit">Submit</button>
