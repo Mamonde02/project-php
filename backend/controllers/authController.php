@@ -21,6 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
     // Hash only after confirmation
     $password = password_hash($password_raw, PASSWORD_DEFAULT);
 
+    // Check if email already exists
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        // echo "Email already exists!";
+        echo "<script>alert('Email already exists!'); window.location.href='../../frontend/views/signup.php';</script>";
+        exit();
+    }
+
     $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
     if ($stmt->execute([$username, $email, $password])) {
         header("Location: ../../frontend/views/login.php");
