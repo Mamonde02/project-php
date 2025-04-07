@@ -7,6 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $confirm_password = password_hash($_POST['confirm_password'], PASSWORD_DEFAULT);
+
+    if ($password !== $confirm_password) {
+        // echo "Passwords do not match!";
+        echo "<script>alert('Passwords do not match!'); window.location.href='../../frontend/views/signup.php';</script>";
+        exit();
+    }
+
 
     $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
     if ($stmt->execute([$username, $email, $password])) {
