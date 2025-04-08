@@ -49,6 +49,7 @@
             <a href="joke.php">Jokes</a>
             <a href="profile.php">Profile</a>
             <a href="chat.php">Chat</a>
+            <a href="watch.php">Watch</a>
         </div>
         <div>
             <?php if (isset($_SESSION['user'])): ?>
