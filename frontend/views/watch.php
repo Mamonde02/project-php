@@ -10,10 +10,14 @@ $url = 'https://api.jikan.moe/v4/top/anime?limit=10';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 
+// collect data anime 10 list
+$animes = $data["data"];
+
 // print_r($data);
 
 // print_r($data["data"][0]["title"]);
 
+$id = $data["data"][0]["mal_id"];
 $title = $data["data"][0]["title"];
 $type = $data["data"][0]["type"];
 $source = $data["data"][0]["source"];
@@ -21,6 +25,19 @@ $score = $data["data"][0]["score"];
 $synopsis = $data["data"][0]["synopsis"];
 $season = $data["data"][0]["season"];
 $year = $data["data"][0]["year"];
+
+print_r($id);
+
+// from react sample project
+// {animeList.map((anime) => (
+//     <li key={anime.mal_id}>
+//       {/* <strong>{anime.title}</strong> */}
+//       <strong>{anime.rank} </strong>
+//       <strong>Anime title: {anime.title} </strong>
+//       <strong>Score: {anime.score} </strong>
+//       <strong>Popularity: {anime.popularity} </strong>
+//     </li>
+//   ))}
 
 // $image = $data["data"][0]["images"]["jpg"]["large_image_url"];
 $image = $data["data"][0]["images"]["jpg"]["image_url"];
@@ -69,70 +86,22 @@ print_r($image);
                 </div>
             </div>
 
-            <!-- sampel -->
-            <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <!-- <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200?text=Watch+1" alt="Watch 1"> -->
-                <img class="w-full h-48 object-cover" src=<?php echo $image ?> alt="Watch Anime 1">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold"><?php echo $title; ?></h2>
-                    <p class="text-gray-600">Type: <?php echo $type ?></p>
-                    <!-- extra data sample -->
-                    <p class="text-gray-600">Score: <?php echo $source ?></p>
-                    <p class="text-gray-600">Year: <?php echo $year ?></p>
-                    <!-- synopsis description design classes -->
-                    <!-- <p class="text-gray-400"><?php echo $synopsis ?></p> -->
+            <?php foreach ($animes as $anime): ?>
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <!-- <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200?text=Watch+1" alt="Watch 1"> -->
+                    <img class="w-full h-48 object-cover" src=<?php echo $anime["images"]["jpg"]["image_url"] ?> alt="Watch Anime 1">
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold"><?php echo $anime["title"]; ?></h2>
+                        <p class="text-gray-600">Type: <?php echo $anime["type"] ?></p>
+                        <p class="text-gray-600">Score: <?php echo $anime["score"] ?></p>
+                        <p class="text-gray-600">Year: <?php echo $anime["year"] ?></p>
 
-                    <p class="text-blue-500 font-bold mt-2">Rating: <?php echo $score ?></p>
-                    <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">View</button>
+                        <p class="text-blue-500 font-bold mt-2">Rating: <?php echo $anime["score"] ?></p>
+                        <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">View</button>
+                    </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
 
-            <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <!-- <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200?text=Watch+1" alt="Watch 1"> -->
-                <img class="w-full h-48 object-cover" src=<?php echo $image ?> alt="Watch Anime 1">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold"><?php echo $title; ?></h2>
-                    <p class="text-gray-600">Type: <?php echo $type ?></p>
-                    <!-- extra data sample -->
-                    <p class="text-gray-600">Score: <?php echo $source ?></p>
-                    <p class="text-gray-600">Year: <?php echo $year ?></p>
-                    <!-- synopsis description design classes -->
-                    <!-- <p class="text-gray-400"><?php echo $synopsis ?></p> -->
-
-                    <p class="text-blue-500 font-bold mt-2">Rating: <?php echo $score ?></p>
-                    <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">View</button>
-                </div>
-            </div>
-
-            <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <!-- <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200?text=Watch+1" alt="Watch 1"> -->
-                <img class="w-full h-48 object-cover" src=<?php echo $image ?> alt="Watch Anime 1">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold"><?php echo $title; ?></h2>
-                    <p class="text-gray-600">Type: <?php echo $type ?></p>
-                    <!-- extra data sample -->
-                    <p class="text-gray-600">Score: <?php echo $source ?></p>
-                    <p class="text-gray-600">Year: <?php echo $year ?></p>
-                    <!-- synopsis description design classes -->
-                    <!-- <p class="text-gray-400"><?php echo $synopsis ?></p> -->
-
-                    <p class="text-blue-500 font-bold mt-2">Rating: <?php echo $score ?></p>
-                    <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">View</button>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <!-- <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200?text=Watch+2" alt="Watch 2">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold">Sport Watch</h2>
-                    <p class="text-gray-600">Perfect for outdoor adventures and active lifestyle.</p>
-                    <p class="text-blue-500 font-bold mt-2">₱3,499</p>
-                    <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">View</button>
-                </div>
-            </div> -->
-
-            <!-- Add more cards if needed... -->
         </div>
     </div>
 
