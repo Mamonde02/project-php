@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once "../config/database.php";
+require_once "../models/user.php";
+
+$userModel = new User($pdo);
 
 // SIGNUP
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
@@ -22,9 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
     $password = password_hash($password_raw, PASSWORD_DEFAULT);
 
     // Check if email already exists
-    $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    if ($stmt->fetch()) {
+    // $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+    // $stmt->execute([$email]);
+
+    $existingUser = $userModel->findByEmail($email);
+
+    if ($existingUser) {
         // echo "Email already exists!";
         echo "<script>alert('Email already exists!'); window.location.href='../../frontend/views/signup.php';</script>";
         exit();
@@ -46,9 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     $password = $_POST['password'];
 
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+    // $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+    // $stmt->execute([$email]);
+    // $user = $stmt->fetch();
+
+    $user = $userModel->findByEmail($email);
+
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id']; // store user ID in session
