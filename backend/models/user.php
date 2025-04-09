@@ -20,4 +20,16 @@ class User
         $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
         return $stmt->execute([$username, $email, $password]);
     }
+
+    public function update($id, $username, $email, $password)
+    {
+        $stmt = $this->pdo->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?");
+        return $stmt->execute([$username, $email, $password, $id]);
+    }
+
+    public function delete($id)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
 }
