@@ -2,6 +2,12 @@
 session_start();
 require_once "../../backend/config/database.php";
 
+if (!isset($_SESSION['user_id'])) {
+    echo "User ID is not set in session. Please log in again.";
+    header("Location: login.php");
+    exit();
+}
+
 
 // <!-- https://api.jikan.moe/v4/top/anime -->
 
