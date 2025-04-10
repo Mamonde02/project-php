@@ -91,9 +91,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
     try {
         // Check if the email is already taken by another user
         // do logic here create another model
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
-        $stmt->execute([$email, $user_id]);
-        if ($stmt->fetch()) {
+        // $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
+        // $stmt->execute([$email, $user_id]);
+
+        $checkEmail = $userModel->checkByEmailId($email, $user_id);
+        if ($checkEmail) {
             $_SESSION['message'] = "Email is already in use by another account.";
             $_SESSION['message_type'] = "danger";
             header("Location: ../../frontend/views/profile.php");
