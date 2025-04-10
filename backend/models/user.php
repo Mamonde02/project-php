@@ -27,6 +27,13 @@ class User
         return $stmt->execute([$username, $email, $password, $id]);
     }
 
+    public function checkByEmailId($email, $id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = ? AND id != ?");
+        $stmt->execute([$email, $id]);
+        return $stmt->fetch();
+    }
+
     public function delete($id)
     {
         $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
