@@ -90,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
 
     try {
         // Check if the email is already taken by another user
+        // do logic here create another model
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
         $stmt->execute([$email, $user_id]);
         if ($stmt->fetch()) {
@@ -101,8 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
 
         // Update user information
         if ($password) {
-            $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?");
-            $stmt->execute([$username, $email, $password, $user_id]);
+            // $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?");
+            // $stmt->execute([$username, $email, $password, $user_id]);
+            $updateUser = $userModel->update($user_id, $username, $email, $password);
         } else {
             $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
             $stmt->execute([$username, $email, $user_id]);
