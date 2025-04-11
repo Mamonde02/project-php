@@ -67,7 +67,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         // ✅ Set toast message
         $_SESSION['toast_message'] = "Welcome to Homepage Dashboard, " . $user['username'] . "!";
 
-        header("Location: ../../frontend/views/dashboard.php");
+        // header("Location: ../../frontend/views/dashboard.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
         exit();
     } else {
         // echo "Invalid credentials!";
@@ -75,8 +79,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 
         $_SESSION['message'] = "Invalid credentials.";
         $_SESSION['message_type'] = "danger";
-        header("Location: ../../frontend/views/login.php");
-        exit();
+        // header("Location: ../../frontend/views/login.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/login.php");
     }
 }
 
