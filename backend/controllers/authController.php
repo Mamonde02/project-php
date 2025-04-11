@@ -119,15 +119,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
             exit();
         }
 
-        // Update user information
-        if ($password) {
-            // $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?");
-            // $stmt->execute([$username, $email, $password, $user_id]);
-            $updateUser = $userModel->update($user_id, $username, $email, $password);
-        } else {
-            $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
-            $stmt->execute([$username, $email, $user_id]);
-        }
+        // // Update user information
+        // if ($password) {
+        //     // $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?");
+        //     // $stmt->execute([$username, $email, $password, $user_id]);
+        //     // $updateUser = $userModel->update($user_id, $username, $email, $password);
+        //     $updateUser = $userModel->updateProfile($user_id, $username, $email);
+        // } else {
+        //     $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
+        //     $stmt->execute([$username, $email, $user_id]);
+        // }
+
+        $updateUser = $userModel->updateProfile($user_id, $username, $email);
 
         // Update session variables
         $_SESSION['user'] = $username;
