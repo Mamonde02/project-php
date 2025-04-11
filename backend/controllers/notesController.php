@@ -76,7 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_note'])) {
         $_SESSION['alert_type'] = "success"; // Bootstrap alert color
 
         // Redirect back to the dashboard
-        header("Location: ../../frontend/views/dashboard.php");
+        // header("Location: ../../frontend/views/dashboard.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
         exit();
     } else {
         // echo "Failed to add note!";
@@ -84,7 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_note'])) {
 
         $_SESSION['alert_message'] = "Failed to add note!";
         $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
-        header("Location: ../../frontend/views/dashboard.php");
+        // header("Location: ../../frontend/views/dashboard.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
         exit();
     }
 }
@@ -106,7 +114,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_note'])) {
         $_SESSION['alert_type'] = "danger"; // Bootstrap alert color
 
         // Redirect back to the dashboard
-        header("Location: ../../frontend/views/dashboard.php");
+        // header("Location: ../../frontend/views/dashboard.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
         exit();
     } else {
         // echo "Failed to delete note!";
@@ -114,7 +126,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_note'])) {
 
         $_SESSION['alert_message'] = "Failed to delete note!";
         $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
-        header("Location: ../../frontend/views/dashboard.php");
+        // header("Location: ../../frontend/views/dashboard.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
         exit();
     }
 }
@@ -140,7 +156,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_note'])) {
         $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
 
         // Redirect back to the dashboard
-        header("Location: ../../frontend/views/dashboard.php");
+        // header("Location: ../../frontend/views/dashboard.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
         exit();
     } else {
         // echo "Failed to update note!";
@@ -148,7 +168,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_note'])) {
 
         $_SESSION['alert_message'] = "Failed to update note!";
         $_SESSION['alert_type'] = "warning"; // Bootstrap alert color
-        header("Location: ../../frontend/views/dashboard.php");
+        // header("Location: ../../frontend/views/dashboard.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
         exit();
     }
 }
