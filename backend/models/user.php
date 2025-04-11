@@ -21,6 +21,12 @@ class User
         return $stmt->execute([$username, $email, $password]);
     }
 
+    public function updateProfile($id, $username, $email)
+    {
+        $stmt = $this->pdo->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
+        return $stmt->execute([$username, $email, $id]);
+    }
+
     public function update($id, $username, $email, $password)
     {
         $stmt = $this->pdo->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?");
