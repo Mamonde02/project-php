@@ -45,6 +45,65 @@ $userinfo = $stmt->fetchAll();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
+<style>
+    .cardCat {
+        width: 300px;
+        height: 250px;
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-content {
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333;
+    }
+
+    #catFact {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+
+    /* From Uiverse.io by adamgiebl */
+    .buttonDesign {
+        background: #fbca1f;
+        font-family: inherit;
+        padding: 0.6em 1.3em;
+        font-weight: 900;
+        font-size: 18px;
+        border: 3px solid black;
+        border-radius: 0.4em;
+        box-shadow: 0.1em 0.1em;
+        cursor: pointer;
+    }
+
+    .buttonDelete {
+        background: rgb(237, 72, 70);
+        font-family: inherit;
+        padding: 0.6em 1.3em;
+        font-weight: 900;
+        font-size: 18px;
+        border: 3px solid black;
+        border-radius: 0.4em;
+        box-shadow: 0.1em 0.1em;
+        cursor: pointer;
+    }
+
+    .buttonDesign:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+    }
+
+    .buttonDesign:active {
+        transform: translate(0.05em, 0.05em);
+        box-shadow: 0.05em 0.05em;
+    }
+</style>
 
 <body>
 
@@ -388,66 +447,5 @@ $userinfo = $stmt->fetchAll();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
-<style>
-    .cardCat {
-        width: 300px;
-        height: 250px;
-        background-color: #f7f7f7;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-content {
-        padding: 20px;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        color: #333;
-    }
-
-    #catFact {
-        font-weight: bold;
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-
-    /* From Uiverse.io by adamgiebl */
-    .buttonDesign {
-        background: #fbca1f;
-        font-family: inherit;
-        padding: 0.6em 1.3em;
-        font-weight: 900;
-        font-size: 18px;
-        border: 3px solid black;
-        border-radius: 0.4em;
-        box-shadow: 0.1em 0.1em;
-        cursor: pointer;
-    }
-
-    .buttonDelete {
-        background: rgb(237, 72, 70);
-        font-family: inherit;
-        padding: 0.6em 1.3em;
-        font-weight: 900;
-        font-size: 18px;
-        border: 3px solid black;
-        border-radius: 0.4em;
-        box-shadow: 0.1em 0.1em;
-        cursor: pointer;
-    }
-
-    .buttonDesign:hover {
-        transform: translate(-0.05em, -0.05em);
-        box-shadow: 0.15em 0.15em;
-    }
-
-    .buttonDesign:active {
-        transform: translate(0.05em, 0.05em);
-        box-shadow: 0.05em 0.05em;
-    }
-</style>
-
 
 </html>
