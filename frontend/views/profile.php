@@ -71,6 +71,13 @@ if (!$userinfo) {
             Update Profile
         </button>
 
+        <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#changePasswordModal">
+            Change Password
+        </button>
 
 
     </div>
@@ -102,10 +109,10 @@ if (!$userinfo) {
                 <input type="email" class="form-control" id="email" name="email"
                     value="<?php echo htmlspecialchars($userinfo['email']); ?>" required>
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="password" class="form-label">New Password (leave blank to keep current password)</label>
                 <input type="password" class="form-control" id="password" name="password">
-            </div>
+            </div> -->
             <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
         </form>
     </div>
@@ -132,11 +139,39 @@ if (!$userinfo) {
                             value="<?php echo htmlspecialchars($userinfo['username']); ?>" required><br>
                         <input class="form-control" type="email" name="email" id="email" placeholder="Email"
                             value="<?php echo htmlspecialchars($userinfo['email']); ?>" required><br>
-                        <input class="form-control" type="password" name="password" id="password"
-                            placeholder="New Password (leave blank to keep current password)"><br>
+                        <!-- <input class="form-control" type="password" name="password" id="password"
+                            placeholder="New Password (leave blank to keep current password)"><br> -->
 
                         <!-- <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br> -->
                         <button class="btn btn-success" type="submit" name="update_profile">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Form Change Password -->
+    <!-- modal bootstrap initial -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="../../backend/controllers/authController.php" method="POST">
+                        <input type="hidden" name="id" id="id" value="<?php echo htmlspecialchars($userinfo['id']); ?>">
+                        <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
+
+                        <input class="form-control" type="password" name="current_password" id="current_password"
+                            placeholder="Current Password"><br>
+                        <input class="form-control" type="password" name="new_password" id="new_password"
+                            placeholder="New Password"><br>
+                        <input class="form-control" type="password" name="confirm_password" id="confirm_password"
+                            placeholder="Confirm Password"><br>
+
+                        <button class="btn btn-success" type="submit" name="change_password">Update Password</button>
                     </form>
                 </div>
             </div>
