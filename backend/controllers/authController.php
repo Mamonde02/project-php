@@ -156,3 +156,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
         exit();
     }
 }
+
+// CHANGE PASSWORD
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_password'])) {
+    $user_id = $_SESSION['user_id'];
+    $current_password = $_POST['current_password'];
+    $new_password = $_POST['new_password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($new_password !== $confirm_password) {
+        $_SESSION['message'] = "New password and confirm password do not match.";
+        $_SESSION['message_type'] = "danger";
+        // header("Location: ../../frontend/views/profile.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        exit();
+    }
+
+    try {
+        $stmt = $pdo->prepare("SELECT password FROM users WHERE id = ?");
+        $stmt->execute([$user_id]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!password_verify($current_password, $user['password'])) {
+            $_SESSION['message'] = "Current password is incorrect.";
+            $_SESSION['message_type'] = "danger";
+            // header("Location: ../../frontend/views/profile.php");
+            // exit();  
+
+            $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+            header("Location: " . $baseUrl . "frontend/views/profile.php");
+            exit();
+        }
+
+        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmt->execute([password_hash($new_password, PASSWORD_DEFAULT), $user_id]);
+
+        $_SESSION['message'] = "Password changed successfully!";
+        $_SESSION['message_type'] = "success";
+        // header("Location: ../../frontend/views/profile.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        exit();
+    } catch (PDOException $e) {
+        $_SESSION['message'] = "An error occurred: " . $e->getMessage();
+        $_SESSION['message_type'] = "danger";
+        // header("Location: ../../frontend/views/profile.php");
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        exit();
+    }
+}
