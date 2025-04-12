@@ -165,11 +165,11 @@ if (!$userinfo) {
                         <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
 
                         <input class="form-control" type="password" name="current_password" id="current_password"
-                            placeholder="Current Password"><br>
+                            placeholder="Current Password" required><br>
                         <input class="form-control" type="password" name="new_password" id="new_password"
-                            placeholder="New Password"><br>
+                            placeholder="New Password" required><br>
                         <input class="form-control" type="password" name="confirm_password" id="confirm_password"
-                            placeholder="Confirm Password"><br>
+                            placeholder="Confirm Password" required><br>
 
                         <button class="btn btn-success" type="submit" name="change_password">Update Password</button>
                     </form>
