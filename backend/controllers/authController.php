@@ -17,7 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
 
     if ($password_raw !== $confirm_password_raw) {
         // echo "Passwords do not match!";
-        echo "<script>alert('Passwords do not match!'); window.location.href='../../frontend/views/signup.php';</script>";
+        // echo "<script>alert('Passwords do not match!'); window.location.href='../../frontend/views/signup.php';</script>";
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/signup.php");
         exit();
     }
 
@@ -42,7 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
 
     if ($existingUser) {
         // echo "Email already exists!";
-        echo "<script>alert('Email already exists!'); window.location.href='../../frontend/views/signup.php';</script>";
+        // echo "<script>alert('Email already exists!'); window.location.href='../../frontend/views/signup.php';</script>";
+        // exit();
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/signup.php");
         exit();
     }
 
@@ -56,7 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         exit();
     } else {
         // echo "Signup failed!";
-        echo "<script>alert('Singup failed!'); window.location.href='../../frontend/views/signup.php';</script>";
+        // echo "<script>alert('Singup failed!'); window.location.href='../../frontend/views/signup.php';</script>";
+
+        $_SESSION['error'] = "Signup failed!";
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/signup.php");
+        exit();
     }
 }
 
