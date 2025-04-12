@@ -21,6 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         exit();
     }
 
+    if (strlen($password_raw) < 6) {
+        // echo "<script>alert('Passwords should be 6 characters!'); window.location.href='../../frontend/views/signup.php';</script>";
+
+        $_SESSION['error'] = "Password should be 6 characters!";
+
+        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        header("Location: " . $baseUrl . "frontend/views/signup.php");
+        exit();
+    }
+
     // Hash only after confirmation
     $password = password_hash($password_raw, PASSWORD_DEFAULT);
 
