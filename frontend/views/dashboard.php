@@ -389,55 +389,10 @@ $userinfo = $stmt->fetchAll();
         </div>
     </div>
 
-    <script>
-        const catFactButton = document.getElementById("catFactButton");
-        catFactButton.addEventListener('click', async () => {
-            try {
-                const response = await fetch("https://catfact.ninja/fact");
-                const data = await response.json();
-                console.log(data);
-
-                const catFact = data.fact;
-                const catFactElement = document.getElementById("catFact");
-
-                // Generate Display and Render the Jokes 
-                catFactElement.innerHTML = `Cat Fact: ${catFact}`;
-
-            } catch (error) {
-                console.error(error);
-            }
-        });
-    </script>
-
-
-    <script>
-        // Show toast if message exists
-        window.onload = function() {
-            var toastEl = document.getElementById("loginToast");
-            if (toastEl && toastEl.querySelector('.toast-body').textContent.trim() !== "") {
-                var toast = new bootstrap.Toast(toastEl);
-                toast.show();
-            }
-        };
-    </script>
-
-
-
+    <script src="../js/dashboard.js"></script>
 
     <br>
     <a href="../logout.php">Logout</a>
-
-
-    <script>
-        function openUpdateForm(noteId, title, notetype, comment) {
-            document.getElementById("noteId").value = noteId;
-            document.getElementById("title").value = title;
-            document.getElementById("notetype").value = notetype;
-            document.getElementById("comment").value = comment;
-            document.getElementById("updateForm").style.display = "block";
-        }
-    </script>
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
