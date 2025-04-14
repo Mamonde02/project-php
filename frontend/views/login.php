@@ -78,7 +78,7 @@ if (isset($_SESSION['user_id'])) {
             <!-- <a href="signup.php">Don't have an account? Sign up</a> -->
 
         </a>
-        <a href="../index.php" class="p">Explore 🚀<span class="span">See More 💫</span>
+        <a href="../../index.php" class="p">Explore 🚀<span class="span">See More 💫</span>
         </a>
 
         <p class="p line">Or With</p>
