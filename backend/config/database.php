@@ -1,8 +1,12 @@
 <?php
-$host = "localhost";
-$dbname = "auth_system";
-$dbusername = "root";
-$dbpassword = "valeroso";
+// $host = "localhost";
+// $dbname = "auth_system";
+// $dbusername = "root";
+// $dbpassword = "valeroso";
+$host = getenv('DB_HOST') ?: 'localhost';
+$dbname = getenv('DB_NAME') ?: 'auth_system';
+$dbusername = getenv('DB_USER') ?: 'root';
+$dbpassword = getenv('DB_PASS') ?: 'valeroso';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
