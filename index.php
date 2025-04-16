@@ -27,7 +27,7 @@
         <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
             A simple, secure, and responsive authentication system using PHP, MySQL, and Tailwind CSS.
         </p>
-        <a href="views/signup.php" class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-700 transition">
+        <a href="frontend/views/signup.php" class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-700 transition">
             Get Started
         </a>
     </section>
