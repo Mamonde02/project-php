@@ -1,6 +1,3 @@
-<!-- // import css from css folder -->
-<!-- <link rel="stylesheet" href="../css/dashboard.css"> -->
-
 <?php
 session_start();
 // import from tha backend directory
