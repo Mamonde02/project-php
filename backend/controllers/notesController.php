@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "../config/database.php";
+require_once "../config/baseconfig.php";
 
 if (!isset($_SESSION['user_id'])) {
     die("Unauthorized access");
@@ -79,8 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_note'])) {
         // header("Location: ../../frontend/views/dashboard.php");
         // exit();
 
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        // header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+
+        header("Location: " . BASE_URL . "frontend/views/dashboard.php");
+
         exit();
     } else {
         // echo "Failed to add note!";
@@ -91,8 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_note'])) {
         // header("Location: ../../frontend/views/dashboard.php");
         // exit();
 
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        // header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+
+        header("Location: " . BASE_URL . "frontend/views/dashboard.php");
         exit();
     }
 }
@@ -117,8 +123,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_note'])) {
         // header("Location: ../../frontend/views/dashboard.php");
         // exit();
 
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        // header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+
+        header("Location: " . BASE_URL . "frontend/views/dashboard.php");
         exit();
     } else {
         // echo "Failed to delete note!";
@@ -129,8 +137,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_note'])) {
         // header("Location: ../../frontend/views/dashboard.php");
         // exit();
 
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        // header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+
+        header("Location: " . BASE_URL . "frontend/views/dashboard.php");
         exit();
     }
 }
@@ -159,8 +169,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_note'])) {
         // header("Location: ../../frontend/views/dashboard.php");
         // exit();
 
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        // header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+
+        header("Location: " . BASE_URL . "frontend/views/dashboard.php");
         exit();
     } else {
         // echo "Failed to update note!";
@@ -171,8 +183,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_note'])) {
         // header("Location: ../../frontend/views/dashboard.php");
         // exit();
 
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        // header("Location: " . $baseUrl . "frontend/views/dashboard.php");
+
+        header("Location: " . BASE_URL . "frontend/views/dashboard.php");
         exit();
     }
 }
