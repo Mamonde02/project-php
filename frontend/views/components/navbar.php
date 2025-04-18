@@ -1,5 +1,6 @@
 <?php
 // session_start();
+require_once "../../backend/config/baseconfig.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,7 @@
         <div>
             <?php if (isset($_SESSION['user'])): ?>
                 <span style="color: white; margin-right: 10px;">Welcome, <?php echo $_SESSION['user']; ?>!</span>
-                <a class="logout-btn" href="/php-auth/frontend/logout.php">Logout</a>
+                <a class="logout-btn" href="<?php echo BASE_URL . 'frontend/logout.php'; ?>">Logout</a>
             <?php else: ?>
                 <a href="login.php">Login</a>
             <?php endif; ?>
