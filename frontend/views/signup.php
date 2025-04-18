@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "../../backend/config/database.php";
+require_once "../../backend/config/baseconfig.php";
 
 
 if (isset($_SESSION['user_id'])) {
@@ -50,8 +51,7 @@ if (isset($_SESSION['error'])) {
         <?php unset($alert_message, $alert_type); ?>
     <?php endif; ?>
 
-
-    <form action="../../backend/controllers/authController.php" method="POST" class="form">
+    <form action="<?php echo BASE_URL; ?>backend/controllers/authController.php" method="POST" class="form">
         <p class="title">Register </p>
         <p class="message">Signup now and get full access to our app. </p>
         <!-- <div class="flex"> -->
