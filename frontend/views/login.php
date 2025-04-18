@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "../../backend/config/baseconfig.php";
 
 if (isset($_SESSION['user_id'])) {
     header("Location: dashboard.php");
@@ -40,7 +41,8 @@ if (isset($_SESSION['user_id'])) {
     <?php endif; ?>
 
     <!-- From Uiverse.io by JohnnyCSilva -->
-    <form action="../../backend/controllers/authController.php" method="POST" class="form">
+    <form action="<?php echo BASE_URL; ?>backend/controllers/authController.php" method="POST" class="form">
+        <!-- <form action="../../backend/controllers/authController.php" method="POST" class="form"> -->
         <div class="flex-column">
             <label>Email </label>
         </div>
