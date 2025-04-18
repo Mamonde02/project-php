@@ -22,8 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/signup.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/signup.php");
+
+        header("Location: " . BASE_URL . "frontend/views/signup.php");
         exit();
     }
 
@@ -33,8 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         $_SESSION['error'] = "Password should be 6 characters!";
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/signup.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/signup.php");
+        header("Location: " . BASE_URL . "frontend/views/signup.php");
         exit();
     }
 
@@ -53,8 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/signup.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/signup.php");
+
+        header("Location: " . BASE_URL . "frontend/views/signup.php");
         exit();
     }
 
@@ -64,8 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/login.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/login.php");
+
+        header("Location: " . BASE_URL . "frontend/views/login.php");
         exit();
     } else {
         // echo "Signup failed!";
@@ -74,8 +81,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         $_SESSION['error'] = "Signup failed!";
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/signup.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/signup.php");
+
+        header("Location: " . BASE_URL . "frontend/views/signup.php");
         exit();
     }
 }
@@ -119,8 +128,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/login.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/login.php");
+
+        header("Location: " . BASE_URL . "frontend/views/login.php");
         exit();
     }
 }
@@ -148,8 +159,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
             // exit();
 
             // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-            $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-            header("Location: " . $baseUrl . "frontend/views/profile.php");
+            // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+            // header("Location: " . $baseUrl . "frontend/views/profile.php");
+
+            header("Location: " . BASE_URL . "frontend/views/profile.php");
             exit();
         }
 
@@ -177,8 +190,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/profile.php");
+
+        header("Location: " . BASE_URL . "frontend/views/profile.php");
         exit();
     } catch (PDOException $e) {
         $_SESSION['message'] = "An error occurred: " . $e->getMessage();
@@ -186,8 +201,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
         // header("Location: ../../frontend/views/profile.php");
         // exit();
 
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
+        // header("Location: " . $baseUrl . "frontend/views/profile.php");
+
+        header("Location: " . BASE_URL . "frontend/views/profile.php");
         exit();
     }
 }
@@ -206,8 +223,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_password'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/profile.php");
+
+        header("Location: " . BASE_URL . "frontend/views/profile.php");
         exit();
     }
 
@@ -223,8 +242,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_password'])) {
             // exit();  
 
             // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-            $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-            header("Location: " . $baseUrl . "frontend/views/profile.php");
+            // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+            // header("Location: " . $baseUrl . "frontend/views/profile.php");
+
+            header("Location: " . BASE_URL . "frontend/views/profile.php");
             exit();
         }
 
@@ -237,8 +258,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_password'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/profile.php");
+
+        header("Location: " . BASE_URL . "frontend/views/profile.php");
         exit();
     } catch (PDOException $e) {
         $_SESSION['message'] = "An error occurred: " . $e->getMessage();
@@ -247,8 +270,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_password'])) {
         // exit();
 
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
-        $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
-        header("Location: " . $baseUrl . "frontend/views/profile.php");
+        // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
+        // header("Location: " . $baseUrl . "frontend/views/profile.php");
+
+        header("Location: " . BASE_URL . "frontend/views/profile.php");
         exit();
     }
 }
