@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: php-auth-app
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    region: singapore
