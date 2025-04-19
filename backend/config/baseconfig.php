@@ -6,7 +6,14 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false && $_SERVER['SERVER_POR
     $projectPath = '/php-auth/';
 }
 
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? "https://" : "http://";
+$protocol = 'http://';
+if (
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ||
+    (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+) {
+    $protocol = 'https://';
+}
+
 define('BASE_URL', $protocol . $_SERVER['HTTP_HOST'] . $projectPath);
 
 
