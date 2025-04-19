@@ -7,9 +7,11 @@ $host = getenv('DB_HOST') ?: 'localhost';
 $dbname = getenv('DB_NAME') ?: 'auth_system';
 $dbusername = getenv('DB_USER') ?: 'root';
 $dbpassword = getenv('DB_PASS') ?: 'valeroso';
+$port = getenv('DB_PORT') ?: 5432;
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+    // $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $dbusername, $dbpassword);
+    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "✅ Server is running: Database connected successfully!";
 } catch (PDOException $e) {
