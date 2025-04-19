@@ -1,23 +1,24 @@
-# Use PHP with Apache base image
+# Use PHP with Apache
 FROM php:8.4-apache
 
-# Install necessary PHP extensions including pdo_mysql
+# Install necessary PHP extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
-    zip \
-    unzip \
-    && docker-php-ext-install pdo pdo_mysql
+    zip unzip \
+    && docker-php-ext-install pdo pdo_mysql \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Enable Apache mod_rewrite
+# Enable Apache rewrite module
 RUN a2enmod rewrite
 
-# Set the working directory
-WORKDIR /var/www/html/
+# Set working directory
+WORKDIR /var/www/html
 
-# Copy project files to container
+# Copy all project files
 COPY . .
 
-# Open port 80
+# Expose Apache port
 EXPOSE 80
+
