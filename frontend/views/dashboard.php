@@ -41,6 +41,8 @@ $userinfo = $stmt->fetchAll();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/dashboard.css">
+    <!-- // tailwindcss link -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <style>
     .cardCat {
@@ -291,49 +293,76 @@ $userinfo = $stmt->fetchAll();
 
     <!-- Weather API -->
     <?php
-    $lat = "14.5995"; // Latitude for Manila
-    $lon = "120.9842"; // Longitude for Manila
+    $lat = "10.3157"; // Latitude for Cebu
+    $lon = "123.8854"; // Longitude for Cebu
     $url = "https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&current_weather=true";
 
     // Fetch API response
     $response = file_get_contents($url);
 
-    // Convert JSON to PHP array
-    $data = json_decode($response, true);
+    // // Convert JSON to PHP array
+    // $data = json_decode($response, true);
 
-    // Extract temperature
-    $temp = $data['current_weather']['temperature'];
+    // // Extract temperature
+    // $temp = $data['current_weather']['temperature'];
+
+    // Check if the response is valid
+    if ($response === FALSE) {
+        $error = "Failed to connect to the weather API.";
+        $temp = "N/A";
+    } else {
+        $data = json_decode($response, true);
+
+        // Check if temperature data exists
+        if (isset($data['current_weather']['temperature'])) {
+            $temp = $data['current_weather']['temperature'];
+            $error = "";
+        } else {
+            $temp = "N/A";
+            $error = "Weather data unavailable at the moment.";
+        }
+    }
 
     echo "<h4>Weather Report:</h4>";
     echo "<h5>Current temperature: Manila " . $temp . "°C</h5>";
     ?>
 
-    <!-- From Uiverse.io by zanina-yassine -->
-    <div class="card">
-        <div class="container">
-            <div class="cloud front">
-                <span class="left-front"></span>
-                <span class="right-front"></span>
+    <!-- Optional: Show error if any -->
+    <?php if ($error): ?>
+        <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 max-w-md mx-auto text-center">
+            <?php echo $error; ?>
+        </div>
+    <?php endif; ?>
+
+
+    <?php if (!$error): ?>
+        <!-- From Uiverse.io by zanina-yassine -->
+        <div class="card">
+            <div class="container">
+                <div class="cloud front">
+                    <span class="left-front"></span>
+                    <span class="right-front"></span>
+                </div>
+                <span class="sun sunshine"></span>
+                <span class="sun"></span>
+                <div class="cloud back">
+                    <span class="left-back"></span>
+                    <span class="right-back"></span>
+                </div>
             </div>
-            <span class="sun sunshine"></span>
-            <span class="sun"></span>
-            <div class="cloud back">
-                <span class="left-back"></span>
-                <span class="right-back"></span>
+
+            <div class="card-header">
+                <span>Cebu<br>City</span>
+                <span><?php echo date("F j"); ?></span>
+            </div>
+
+            <span class="temp"><?php echo $temp; ?></span>
+
+            <div class="temp-scale">
+                <span>Celcius</span>
             </div>
         </div>
-
-        <div class="card-header">
-            <span>Manila<br>Tundo</span>
-            <span>March 13</span>
-        </div>
-
-        <span class="temp"><?php echo $temp; ?></span>
-
-        <div class="temp-scale">
-            <span>Celcius</span>
-        </div>
-    </div>
+    <?php endif; ?>
 
 
 

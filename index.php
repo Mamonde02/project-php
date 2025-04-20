@@ -123,7 +123,7 @@
 
 
     <!-- Footer -->
-    <footer class="bg-gray-200 py-6 mt-10 text-center text-sm text-gray-600">
+    <footer class="bg-indigo-500 py-6 mt-10 text-center text-sm text-white">
         © <?= date("Y") ?> HobbyTapp. All rights reserved.
     </footer>
 
