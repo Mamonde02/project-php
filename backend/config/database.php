@@ -10,7 +10,9 @@ $dbpassword = getenv('DB_PASS') ?: 'valeroso';
 $port = getenv('DB_PORT') ?: 5432;
 
 try {
-    // $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $dbusername, $dbpassword);
+    // mysql driver
+    // $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+    // pgsql driver
     $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "✅ Server is running: Database connected successfully!";
