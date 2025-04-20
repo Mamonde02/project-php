@@ -73,9 +73,10 @@
     cursor: pointer;
 }
 
-.button-submit {
+.button-submits {
     margin: 20px 0 10px 0;
-    background-color: #151717;
+    /* background-color: #151717; */
+    background-color: rgb(79, 70, 229);
     border: none;
     color: white;
     font-size: 15px;

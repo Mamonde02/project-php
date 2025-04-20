@@ -21,6 +21,27 @@ if (isset($_SESSION['user_id'])) {
 
 </head>
 
+<style>
+    .button-submit {
+        margin: 20px 0 10px 0;
+        /* background-color: #151717; */
+        background-color: rgb(79, 70, 229);
+        border: none;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 10px;
+        height: 50px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .button-submit:hover {
+        background-color: rgb(87, 79, 244);
+        cursor: pointer;
+    }
+</style>
+
 <body>
     <!-- <h2>Login</h2>
     <form action="../../backend/controllers/authController.php" method="POST">
