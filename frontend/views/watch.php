@@ -34,6 +34,8 @@ $year = $data["data"][0]["year"];
 
 
 $image = $data["data"][0]["images"]["jpg"]["image_url"];
+$trailer = $data["data"][0]["trailer"]["url"];
+$url = $data["data"][0]["url"];
 
 // print_r($image);
 // print_r($score);
@@ -70,7 +72,15 @@ $image = $data["data"][0]["images"]["jpg"]["image_url"];
                         <p class="text-gray-600">Year: <?php echo $anime["year"] ?></p>
 
                         <p class="text-blue-500 font-bold mt-2">Rating: <?php echo $anime["score"] ?></p>
-                        <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">View</button>
+                        <!-- view the anime url details button -->
+                        <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+                            onclick="window.location.href = '<?php echo $anime["url"] ?>'">
+                            View Details
+                        </button>
+                        <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+                            onclick="window.location.href = '<?php echo $anime["trailer"]["url"] ?>'">
+                            Watch Trailer
+                        </button>
                     </div>
                 </div>
             <?php endforeach; ?>
