@@ -25,7 +25,7 @@
     <section class="text-center py-20 px-6 bg-indigo-50">
         <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Discover Your Hobbies in One Place</h2>
         <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-            A simple, interesting, excitement and fun way to manage your hobbies system using PHP, MySQL, and Tailwind CSS as our Tech Stack.
+            A simple, interesting, exciting and fun way to manage your hobbies system using PHP, MySQL, and Tailwind CSS as our tech stack.
         </p>
         <a href="frontend/views/signup.php" class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-700 transition">
             Get Started
@@ -64,6 +64,14 @@
             </div>
         </div>
     </section>
+
+    <div class="p-6 border rounded-lg shadow hover:shadow-md transition flex flex-col items-center text-center">
+        <img src="frontend/assets/Picme.jpeg" alt="Developer Image" class="w-24 h-24 rounded-full mb-4 object-cover shadow-md">
+        <h4 class="text-xl font-bold text-indigo-600 mb-1">Developed by</h4>
+        <p class="text-gray-700 font-semibold mb-1">John Raymund Valeroso</p>
+        <p class="text-gray-500 text-sm">Web Developer | Full Stack Developer</p>
+    </div>
+
 
     <!-- Footer -->
     <footer class="bg-gray-200 py-6 mt-10 text-center text-sm text-gray-600">
