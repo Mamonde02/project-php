@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Login</title>
+    <title>Welcome HobbyTapp</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -104,9 +104,9 @@ if (isset($_SESSION['user_id'])) {
         <a href="../../index.php" class="p">Explore 🚀<span class="span">See More 💫</span>
         </a>
 
-        <p class="p line">Or With</p>
+        <!-- <p class="p line">Or With</p> -->
 
-        <div class="flex-row">
+        <!-- <div class="flex-row">
             <button class="btn google">
                 <svg xml:space="preserve" style="enable-background:new 0 0 512 512;" viewBox="0 0 512 512" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="20" version="1.1">
                     <path d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256
@@ -126,7 +126,8 @@ if (isset($_SESSION['user_id'])) {
 
                 Google
 
-            </button><button class="btn apple">
+            </button>
+            <button class="btn apple">
                 <svg xml:space="preserve" style="enable-background:new 0 0 22.773 22.773;" viewBox="0 0 22.773 22.773" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" width="20" height="20" version="1.1">
                     <g>
                         <g>
@@ -139,7 +140,7 @@ if (isset($_SESSION['user_id'])) {
                 Apple
 
             </button>
-        </div>
+        </div> -->
     </form>
 
 
