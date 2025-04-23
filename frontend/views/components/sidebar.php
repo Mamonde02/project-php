@@ -5,71 +5,46 @@ session_start();
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sidebar</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-        }
-
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #333;
-            color: white;
-            padding-top: 20px;
-            position: fixed;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 15px;
-            text-decoration: none;
-            margin: 5px 10px;
-            border-radius: 5px;
-        }
-
-        .sidebar a:hover {
-            background-color: #575757;
-        }
-
-        .sidebar .logout-btn {
-            background-color: red;
-            padding: 10px;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .sidebar .logout-btn:hover {
-            background-color: darkred;
-        }
-
-        .content {
-            margin-left: 260px;
-            padding: 20px;
-            width: calc(100% - 260px);
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-100 flex">
 
-    <div class="sidebar">
-        <!-- <aside> -->
-            <h2 style="text-align: center;">Dashboard</h2>
-            <a href="dashboard.php">🏠 Home</a>
-            <a href="notes.php">📝 Notes</a>
-            <a href="profile.php">👤 Profile</a>
+    <!-- Sidebar -->
+    <div class="w-64 h-screen bg-white border-r shadow-sm flex flex-col fixed">
+        <div class="py-6 text-center border-b">
+            <h2 class="text-xl font-semibold text-indigo-600">Dashboard</h2>
+        </div>
+
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="dashboard.php" class="flex items-center text-gray-700 hover:bg-indigo-100 px-3 py-2 rounded-md transition">
+                🏠 <span class="ml-2">Home</span>
+            </a>
+            <a href="notes.php" class="flex items-center text-gray-700 hover:bg-indigo-100 px-3 py-2 rounded-md transition">
+                📝 <span class="ml-2">Notes</span>
+            </a>
+            <a href="profile.php" class="flex items-center text-gray-700 hover:bg-indigo-100 px-3 py-2 rounded-md transition">
+                👤 <span class="ml-2">Profile</span>
+            </a>
+
             <?php if (isset($_SESSION['user'])): ?>
-                <a class="logout-btn" href="/php-auth/frontend/logout.php">🚪 Logout main</a>
+                <a href="/php-auth/frontend/logout.php" class="flex items-center justify-center bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md mt-6 transition">
+                    🚪 Logout
+                </a>
             <?php else: ?>
-                <a href="login.php">🔑 Login</a>
+                <a href="login.php" class="flex items-center text-indigo-600 hover:text-indigo-800 px-3 py-2 rounded-md mt-6 font-medium transition">
+                    🔑 <span class="ml-2">Login</span>
+                </a>
             <?php endif; ?>
-        <!-- </aside> -->
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 p-6 w-full">
+        <!-- Your content here -->
     </div>
 
 </body>
