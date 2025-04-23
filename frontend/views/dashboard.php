@@ -284,109 +284,111 @@ $userinfo = $stmt->fetchAll();
 
 
     <!-- Weather API -->
-    <?php
-    $lat = "10.3157"; // Latitude for Cebu
-    $lon = "123.8854"; // Longitude for Cebu
-    $url = "https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&current_weather=true";
+    <div class="container-fluid d-flex flex-column align-items-center gap-8">
+        <?php
+        $lat = "10.3157"; // Latitude for Cebu
+        $lon = "123.8854"; // Longitude for Cebu
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&current_weather=true";
 
-    // Fetch API response
-    $response = file_get_contents($url);
+        // Fetch API response
+        $response = file_get_contents($url);
 
-    // // Convert JSON to PHP array
-    // $data = json_decode($response, true);
+        // // Convert JSON to PHP array
+        // $data = json_decode($response, true);
 
-    // // Extract temperature
-    // $temp = $data['current_weather']['temperature'];
+        // // Extract temperature
+        // $temp = $data['current_weather']['temperature'];
 
-    // Check if the response is valid
-    if ($response === FALSE) {
-        $error = "Failed to connect to the weather API.";
-        $temp = "N/A";
-    } else {
+        // Check if the response is valid
+        if ($response === FALSE) {
+            $error = "Failed to connect to the weather API.";
+            $temp = "N/A";
+        } else {
+            $data = json_decode($response, true);
+
+            // Check if temperature data exists
+            if (isset($data['current_weather']['temperature'])) {
+                $temp = $data['current_weather']['temperature'];
+                $error = "";
+            } else {
+                $temp = "N/A";
+                $error = "Weather data unavailable at the moment.";
+            }
+        }
+
+        echo "<h4>Weather Report:</h4>";
+        echo "<h5>Current temperature: Manila " . $temp . "°C</h5>";
+        ?>
+
+        <!-- Optional: Show error if any -->
+        <?php if ($error): ?>
+            <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 max-w-md mx-auto text-center">
+                <?php echo $error; ?>
+            </div>
+        <?php endif; ?>
+
+
+        <?php if (!$error): ?>
+            <!-- From Uiverse.io by zanina-yassine -->
+            <div class="card">
+                <div class="container">
+                    <div class="cloud front">
+                        <span class="left-front"></span>
+                        <span class="right-front"></span>
+                    </div>
+                    <span class="sun sunshine"></span>
+                    <span class="sun"></span>
+                    <div class="cloud back">
+                        <span class="left-back"></span>
+                        <span class="right-back"></span>
+                    </div>
+                </div>
+
+                <div class="card-header">
+                    <span>Cebu<br>City</span>
+                    <span><?php echo date("F j"); ?></span>
+                </div>
+
+                <span class="temp"><?php echo $temp; ?></span>
+
+                <div class="temp-scale">
+                    <span>Celcius</span>
+                </div>
+            </div>
+        <?php endif; ?>
+
+
+
+        <?php
+        $url = "https://catfact.ninja/fact";
+
+        // Fetch API response
+        $response = file_get_contents($url);
+
+        // Convert JSON to PHP array
         $data = json_decode($response, true);
 
-        // Check if temperature data exists
-        if (isset($data['current_weather']['temperature'])) {
-            $temp = $data['current_weather']['temperature'];
-            $error = "";
-        } else {
-            $temp = "N/A";
-            $error = "Weather data unavailable at the moment.";
-        }
-    }
+        // Display random cat fact
+        // echo "Cat Fact: " . $data['fact'];
+        ?>
 
-    echo "<h4>Weather Report:</h4>";
-    echo "<h5>Current temperature: Manila " . $temp . "°C</h5>";
-    ?>
-
-    <!-- Optional: Show error if any -->
-    <?php if ($error): ?>
-        <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 max-w-md mx-auto text-center">
-            <?php echo $error; ?>
-        </div>
-    <?php endif; ?>
-
-
-    <?php if (!$error): ?>
-        <!-- From Uiverse.io by zanina-yassine -->
-        <div class="card">
-            <div class="container">
-                <div class="cloud front">
-                    <span class="left-front"></span>
-                    <span class="right-front"></span>
-                </div>
-                <span class="sun sunshine"></span>
-                <span class="sun"></span>
-                <div class="cloud back">
-                    <span class="left-back"></span>
-                    <span class="right-back"></span>
-                </div>
-            </div>
-
-            <div class="card-header">
-                <span>Cebu<br>City</span>
-                <span><?php echo date("F j"); ?></span>
-            </div>
-
-            <span class="temp"><?php echo $temp; ?></span>
-
-            <div class="temp-scale">
-                <span>Celcius</span>
+        <!-- // reload for cat fact -->
+        <!-- // display cat fact -->
+        <div class="cardCat">
+            <div class="card-content">
+                <p id="catFact">Cat Fact that you should know</p>
             </div>
         </div>
-    <?php endif; ?>
 
-
-
-    <?php
-    $url = "https://catfact.ninja/fact";
-
-    // Fetch API response
-    $response = file_get_contents($url);
-
-    // Convert JSON to PHP array
-    $data = json_decode($response, true);
-
-    // Display random cat fact
-    // echo "Cat Fact: " . $data['fact'];
-    ?>
-
-    <!-- // reload for cat fact -->
-    <!-- // display cat fact -->
-    <div class="cardCat">
-        <div class="card-content">
-            <p id="catFact">Cat Fact that you should know</p>
-        </div>
+        <!-- <p id="catFact">Cat Fact that you should know</p> -->
+        <button
+            class="buttonDesign"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">
+            Click for Cat Fact
+        </button>
     </div>
-
-    <!-- <p id="catFact">Cat Fact that you should know</p> -->
-    <button
-        class="buttonDesign"
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop">
-        Click for Cat Fact
-    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
