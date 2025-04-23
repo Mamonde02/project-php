@@ -1,6 +1,3 @@
-<!-- <?php
-session_start();
-?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +28,7 @@ session_start();
             </a>
 
             <?php if (isset($_SESSION['user'])): ?>
-                <a href="/php-auth/frontend/logout.php" class="flex items-center justify-center bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md mt-6 transition">
+                <a href="/php-auth/frontend/logout.php" class="flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md mt-6 transition">
                     🚪 Logout
                 </a>
             <?php else: ?>
@@ -43,7 +40,8 @@ session_start();
     </div>
 
     <!-- Main Content -->
-    <div class="ml-64 p-6 w-full">
+    <!-- ml-64 p-6 w-full -->
+    <div>
         <!-- Your content here -->
     </div>
 

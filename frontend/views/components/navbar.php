@@ -54,7 +54,7 @@ require_once "../../backend/config/baseconfig.php";
                 <div class="hidden md:flex items-center space-x-4">
                     <?php if (isset($_SESSION['user'])): ?>
                         <span class="text-sm text-gray-600">Welcome, <span class="font-medium"><?php echo $_SESSION['user']; ?></span>!</span>
-                        <a href="<?php echo BASE_URL . 'frontend/logout.php'; ?>" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-md text-sm transition">Logout</a>
+                        <a href="<?php echo BASE_URL . 'frontend/logout.php'; ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md text-sm transition">Logout</a>
                     <?php else: ?>
                         <a href="login.php" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">Login</a>
                     <?php endif; ?>
@@ -73,7 +73,7 @@ require_once "../../backend/config/baseconfig.php";
 
                 <?php if (isset($_SESSION['user'])): ?>
                     <span class="text-sm text-gray-600">Welcome, <?php echo $_SESSION['user']; ?>!</span>
-                    <a href="<?php echo BASE_URL . 'frontend/logout.php'; ?>" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-md text-sm transition mt-2">Logout</a>
+                    <a href="<?php echo BASE_URL . 'frontend/logout.php'; ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md text-sm transition mt-2">Logout</a>
                 <?php else: ?>
                     <a href="login.php" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium mt-2">Login</a>
                 <?php endif; ?>
