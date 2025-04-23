@@ -126,14 +126,10 @@ $userinfo = $stmt->fetchAll();
 
             <!-- <input type="text" name="notetype" placeholder="Note Type" required><br> -->
             <select class="form-select" aria-label="Default select example" name="notetype" required>
-                <option value="">Select Programming Language</option>
-                <option value="HTML">HTML</option>
-                <option value="CSS">CSS</option>
-                <option value="Javascript">JavaScript</option>
-                <option value="Reactjs">Reactjs</option>
-                <option value="Nodejs">Nodejs</option>
-                <option value="PHP">PHP</option>
-                <option value="Laravel">Laravel</option>
+                <option value="">Select Category Hobbies</option>
+                <option value="Anime">Anime</option>
+                <option value="Cat Facts">Cat Facts</option>
+                <option value="Jokes">Jokes</option>
             </select><br>
             <textarea class="form-control" name="comment" placeholder="Comment" required></textarea><br>
             <button class="buttonDesign" type="submit" name="add_note">Add Note</button>
@@ -256,14 +252,10 @@ $userinfo = $stmt->fetchAll();
                         <input class="form-control" type="text" name="title" id="title" placeholder="Title" required><br>
                         <!-- <input class="form-control" type="text" name="notetype" id="notetype" placeholder="Note Type" required><br> -->
                         <select class="form-select" aria-label="Default select example" name="notetype" id="notetype" required>
-                            <option value="">Select Programming Language</option>
-                            <option value="HTML">HTML</option>
-                            <option value="CSS">CSS</option>
-                            <option value="Javascript">JavaScript</option>
-                            <option value="Reactjs">Reactjs</option>
-                            <option value="Nodejs">Nodejs</option>
-                            <option value="PHP">PHP</option>
-                            <option value="Laravel">Laravel</option>
+                            <option value="">Select Category Hobbies</option>
+                            <option value="Anime">Anime</option>
+                            <option value="Cat Facts">Cat Facts</option>
+                            <option value="Jokes">Jokes</option>
                         </select><br>
                         <textarea class="form-control" name="comment" id="comment" placeholder="Comment" required></textarea><br>
                         <button class="buttonDesign" type="submit" name="update_note">Update Note</button>
@@ -275,7 +267,7 @@ $userinfo = $stmt->fetchAll();
 
 
 
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div id="updateForm" style="display: none;">
             <h3>Update Note</h3>
             <form action="../../backend/controllers/notesController.php" method="POST">
@@ -287,7 +279,7 @@ $userinfo = $stmt->fetchAll();
                 <button class="buttonDelete" type="button" onclick="document.getElementById('updateForm').style.display = 'none'">Cancel</button>
             </form>
         </div>
-    </div>
+    </div> -->
 
 
 
