@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "../../backend/config/database.php";
+require_once "../../backend/config/baseconfig.php";
 
 if (!isset($_SESSION['user_id'])) {
     echo "User ID is not set in session. Please log in again.";
@@ -154,7 +155,7 @@ if (!$userinfo) {
         <!-- tailwind Update Profile Form -->
         <div class="bg-white rounded-2xl shadow-md p-6">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Update Your Information</h2>
-            <form action="../../backend/controllers/authController.php" method="POST" class="space-y-4">
+            <form action="<?php echo BASE_URL; ?>backend/controllers/authController.php" method="POST" class="space-y-4">
                 <div>
                     <label for="username" class="block text-sm font-medium">Username</label>
                     <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($userinfo['username']); ?>"
@@ -189,7 +190,7 @@ if (!$userinfo) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../../backend/controllers/authController.php" method="POST">
+                    <form action="<?php echo BASE_URL; ?>backend/controllers/authController.php" method="POST">
                         <input type="hidden" name="id" id="id" value="<?php echo htmlspecialchars($userinfo['id']); ?>">
                         <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
 
@@ -218,7 +219,7 @@ if (!$userinfo) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../../backend/controllers/authController.php" method="POST">
+                    <form action="<?php echo BASE_URL; ?>backend/controllers/authController.php" method="POST">
                         <input type="hidden" name="id" id="id" value="<?php echo htmlspecialchars($userinfo['id']); ?>">
                         <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
 
