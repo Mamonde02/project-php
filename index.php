@@ -25,7 +25,7 @@
     <section class="text-center py-20 px-6 bg-indigo-50">
         <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Discover Your Hobbies in One Place</h2>
         <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-            A simple, interesting, exciting and fun way to manage your hobbies system using PHP, MySQL, and Tailwind CSS as our tech stack.
+            A simple, interesting, exciting and fun way to manage your hobbies system where your hobbies live. A creative zone. A passion space. A vibe. Tap in.
         </p>
         <a href="frontend/views/signup.php" class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-700 transition">
             Get Started
@@ -66,49 +66,60 @@
     </section>
 
 
-    <!-- Weather Section -->
-    <div class="max-w-xl mx-auto mt-6 space-y-4">
+    <!-- Accordion Section -->
+    <div class="max-w-xl mx-auto mt-6 space-y-6">
 
-        <!-- Accordion 1: Temperature -->
+        <!-- Accordion 1 -->
         <div class="border border-gray-300 rounded-lg overflow-hidden">
-            <button onclick="toggleAccordion('temp')" class="w-full px-4 py-3 bg-blue-500 text-white flex justify-between items-center">
-                Temperature Info
+            <button onclick="toggleAccordion('temp')" class="w-full px-4 py-3 bg-indigo-400 text-white flex justify-between items-center">
+                What is HobbyTap?
                 <svg id="icon-temp" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
             <div id="content-temp" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
-                <p>🌡️ Temperature: <strong><?php echo $temperature; ?>°C</strong></p>
-                <p>🥵 Feels Like: <strong><?php echo $feelsLike; ?>°C</strong></p>
+                <p>
+                    <strong>HobbyTap</strong> is a creative blend of the words <em>“hobbies”</em> and <em>“habitat”</em>.
+                    HobbyTap is envisioned as an interactive ecosystem for personal passions.
+                    It's more than a platform — it's where interests thrive.
+                </p>
             </div>
         </div>
 
-        <!-- Accordion 2: Wind -->
+        <!-- Accordion 2 -->
         <div class="border border-gray-300 rounded-lg overflow-hidden">
-            <button onclick="toggleAccordion('wind')" class="w-full px-4 py-3 bg-green-500 text-white flex justify-between items-center">
-                Wind Info
+            <button onclick="toggleAccordion('wind')" class="w-full px-4 py-3 bg-indigo-500 text-white flex justify-between items-center">
+                Why I create this one?
                 <svg id="icon-wind" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
-            <div id="content-wind" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
-                <p>💨 Speed: <strong><?php echo $windSpeed; ?> km/h</strong></p>
-                <p>🧭 Direction: <strong><?php echo $windDirection; ?>°</strong></p>
+            <div id="content-wind" class="max-h-0 overflow-hidden transition-all duration-600 bg-white text-gray-700 px-4 py-3 space-y-2">
+                I created <strong>HobbyTap</strong> to give people a space where their interests are more than just side notes.
+                In a world full of distractions, Because hobbies matter. Because creativity matters. And because we all deserve
+                a space to grow our passions.
             </div>
         </div>
 
-        <!-- Accordion 3: Forecast -->
+        <!-- Accordion 3 -->
         <div class="border border-gray-300 rounded-lg overflow-hidden">
-            <button onclick="toggleAccordion('forecast')" class="w-full px-4 py-3 bg-purple-500 text-white flex justify-between items-center">
-                Forecast Info
+            <button onclick="toggleAccordion('forecast')" class="w-full px-4 py-3 bg-indigo-500 text-white flex justify-between items-center">
+                Technologies Used in HobbyTap
                 <svg id="icon-forecast" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
             <div id="content-forecast" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
-                <p>🔮 Forecast: <strong><?php echo $forecast; ?></strong></p>
-                <p>🌞 UV Index: <strong><?php echo $uvIndex; ?></strong></p>
-                <p>💧 Humidity: <strong><?php echo $humidity; ?>%</strong></p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li><strong>PHP</strong> – Backend logic and routing</li>
+                    <li><strong>Tailwind CSS</strong> – Minimal, responsive design</li>
+                    <li><strong>JavaScript</strong> – Interactivity and UI logic</li>
+                    <li><strong>Open-Meteo API</strong> – Live weather info</li>
+                    <li><strong>MySQL</strong> – Data storage and retrieval</li>
+                    <li><strong>XAMPP</strong> – Local dev and testing</li>
+                    <li><strong>HTML5</strong> – Semantic structure</li>
+                </ul>
+
             </div>
         </div>
 
