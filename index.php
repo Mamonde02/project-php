@@ -72,13 +72,13 @@
         <!-- Accordion 1 -->
         <div class="border border-gray-300 rounded-lg overflow-hidden">
             <button onclick="toggleAccordion('temp')" class="w-full px-4 py-3 bg-indigo-400 text-white flex justify-between items-center">
-                What is HobbyTap?
+                What is HobbyTap?🤔
                 <svg id="icon-temp" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
             <div id="content-temp" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
-                <p>
+                <p class="mt-2">
                     <strong>HobbyTap</strong> is a creative blend of the words <em>“hobbies”</em> and <em>“habitat”</em>.
                     HobbyTap is envisioned as an interactive ecosystem for personal passions.
                     It's more than a platform — it's where interests thrive.
@@ -89,28 +89,30 @@
         <!-- Accordion 2 -->
         <div class="border border-gray-300 rounded-lg overflow-hidden">
             <button onclick="toggleAccordion('wind')" class="w-full px-4 py-3 bg-indigo-500 text-white flex justify-between items-center">
-                Why I create this one?
+                Why I create this one?👨‍💻
                 <svg id="icon-wind" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
             <div id="content-wind" class="max-h-0 overflow-hidden transition-all duration-600 bg-white text-gray-700 px-4 py-3 space-y-2">
-                I created <strong>HobbyTap</strong> to give people a space where their interests are more than just side notes.
-                In a world full of distractions, Because hobbies matter. Because creativity matters. And because we all deserve
-                a space to grow our passions.
+                <p class="mt-2">
+                    I created <strong>HobbyTap</strong> to give people a space where their interests are more than just side notes.
+                    In a world full of distractions, Because hobbies matter. Because creativity matters. And because we all deserve
+                    a space to grow our passions.
+                </p>
             </div>
         </div>
 
         <!-- Accordion 3 -->
         <div class="border border-gray-300 rounded-lg overflow-hidden">
             <button onclick="toggleAccordion('forecast')" class="w-full px-4 py-3 bg-indigo-500 text-white flex justify-between items-center">
-                Technologies Used in HobbyTap
+                Technologies Used in HobbyTap🧙‍♂️
                 <svg id="icon-forecast" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
             <div id="content-forecast" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
-                <ul class="list-disc list-inside space-y-1">
+                <ul class="mt-2 list-disc list-inside space-y-1">
                     <li><strong>PHP</strong> – Backend logic and routing</li>
                     <li><strong>Tailwind CSS</strong> – Minimal, responsive design</li>
                     <li><strong>JavaScript</strong> – Interactivity and UI logic</li>
