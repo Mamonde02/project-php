@@ -38,7 +38,7 @@ if (!$userinfo) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-800 min-h-screen">
     <!-- <h1>Profile</h1>
     <h2>Welcome, <?php echo $_SESSION['name']; ?>!</h2>
     <p>User ID: <?php echo $_SESSION['user_id']; ?></p>
@@ -48,44 +48,82 @@ if (!$userinfo) {
 
 
 
-    <div class="container mt-4">
-        <h1>Profile</h1>
-        <h2>Welcome, <?php echo htmlspecialchars($userinfo['username']); ?>!</h2>
-        <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
-        <p><strong>Email:</strong> <?php echo htmlspecialchars($userinfo['email']); ?></p>
-        <!-- <p><strong>Account Created:</strong> <?php echo htmlspecialchars($userinfo['created_at']); ?></p> -->
+    <div class="container mx-auto px-4 py-2 max-w-4xl">
+        <!-- tailwind Profile Header Card -->
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600 mb-2">👤 Profile</h1>
+            <p class="text-lg font-medium">Welcome, <span class="text-gray-900"><?php echo htmlspecialchars($userinfo['username']); ?></span>!</p>
+            <div class="mt-4 space-y-2">
+                <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
+                <p><strong>Email:</strong> <?php echo htmlspecialchars($userinfo['email']); ?></p>
+            </div>
 
-        <a href="logout.php" class="btn btn-danger">Logout</a>
-        <a href="dashboard.php" class="btn btn-primary">Dashboard</a>
+            <!-- bootstrap old version initial -->
+            <!-- <h1>Profile</h1>
+            <h2>Welcome, <?php echo htmlspecialchars($userinfo['username']); ?>!</h2>
+            <p><strong>User ID:</strong> <?php echo htmlspecialchars($userinfo['id']); ?></p>
+            <p><strong>Email:</strong> <?php echo htmlspecialchars($userinfo['email']); ?></p>
+            <p><strong>Account Created:</strong> <?php echo htmlspecialchars($userinfo['created_at']); ?></p>
 
-        <!-- Update Button modal for Update User profile (Opens Update Form) button -->
-        <button
-            type="button"
-            class="btn btn-warning"
-            data-bs-toggle="modal"
-            data-bs-target="#updateModal"
-            onclick="openUpdateForm( 
+            <a href="logout.php" class="btn btn-danger">Logout</a>
+            <a href="dashboard.php" class="btn btn-primary">Dashboard</a> -->
+
+            <!-- Update Button modal for Update User profile (Opens Update Form) button -->
+            <!-- <button
+                type="button"
+                class="btn btn-warning"
+                data-bs-toggle="modal"
+                data-bs-target="#updateModal"
+                onclick="openUpdateForm( 
             '<?php echo htmlspecialchars($userinfo['id']); ?>',
             '<?php echo htmlspecialchars($userinfo['username']); ?>', 
             '<?php echo htmlspecialchars($userinfo['email']); ?>')">
-            Update Profile
-        </button>
+                Update Profile
+            </button>
 
-        <button
-            type="button"
-            class="btn btn-success"
-            data-bs-toggle="modal"
-            data-bs-target="#changePasswordModal">
-            Change Password
-        </button>
+            <button
+                type="button"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#changePasswordModal">
+                Change Password
+            </button> -->
+
+
+            <!-- tailwind Action Buttons -->
+            <div class="mt-6 flex flex-wrap gap-3">
+                <!-- <a href="logout.php" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow">Logout</a> -->
+                <a href="dashboard.php" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg shadow">Dashboard</a>
+                <button
+                    type="button"
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded-lg shadow"
+                    data-bs-toggle="modal"
+                    data-bs-target="#updateModal"
+                    onclick="openUpdateForm(
+            '<?php echo htmlspecialchars($userinfo['id']); ?>',
+            '<?php echo htmlspecialchars($userinfo['username']); ?>',
+            '<?php echo htmlspecialchars($userinfo['email']); ?>'
+          )">
+                    ✏️ Update Profile
+                </button>
+                <button
+                    type="button"
+                    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg shadow"
+
+                    data-bs-toggle="modal"
+                    data-bs-target="#changePasswordModal">
+                    🔒 Change Password
+                </button>
+            </div>
+        </div>
 
 
     </div>
 
 
 
-    <div class="container mt-4">
-        <h1>Update Profile</h1>
+    <div class="container mx-auto max-w-4xl">
+        <!-- <h1>Update Profile</h1> -->
 
         <!-- Display success or error messages -->
         <?php if (isset($_SESSION['message'])): ?>
@@ -97,8 +135,8 @@ if (!$userinfo) {
         <?php endif; ?>
 
 
-        <!-- Profile Update Form -->
-        <form action="../../backend/controllers/authController.php" method="POST">
+        <!-- bootstrap old version Profile Update Form -->
+        <!-- <form action="../../backend/controllers/authController.php" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username"
@@ -109,12 +147,32 @@ if (!$userinfo) {
                 <input type="email" class="form-control" id="email" name="email"
                     value="<?php echo htmlspecialchars($userinfo['email']); ?>" required>
             </div>
-            <!-- <div class="mb-3">
-                <label for="password" class="form-label">New Password (leave blank to keep current password)</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div> -->
             <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
-        </form>
+        </form> -->
+
+
+        <!-- tailwind Update Profile Form -->
+        <div class="bg-white rounded-2xl shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Update Your Information</h2>
+            <form action="../../backend/controllers/authController.php" method="POST" class="space-y-4">
+                <div>
+                    <label for="username" class="block text-sm font-medium">Username</label>
+                    <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($userinfo['username']); ?>"
+                        class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium">Email</label>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userinfo['email']); ?>"
+                        class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <button type="submit" name="update_profile"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg shadow">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+
     </div>
 
 
@@ -184,6 +242,8 @@ if (!$userinfo) {
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </body>
 
