@@ -116,10 +116,30 @@
                     <li><strong>PHP</strong> – Backend logic and routing</li>
                     <li><strong>Tailwind CSS</strong> – Minimal, responsive design</li>
                     <li><strong>JavaScript</strong> – Interactivity and UI logic</li>
-                    <li><strong>Open-Meteo API</strong> – Live weather info</li>
-                    <li><strong>MySQL</strong> – Data storage and retrieval</li>
-                    <li><strong>XAMPP</strong> – Local dev and testing</li>
+                    <li><strong>Render</strong> – For hosting and deployment</li>
+                    <li><strong>PostgreSQL</strong> – Data storage and retrieval</li>
+                    <li><strong>XAMPP & Docker</strong> – Local dev and testing</li>
                     <li><strong>HTML5</strong> – Semantic structure</li>
+                    <li><strong>CSS3</strong> – UI styling design</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- Accordion 4 -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button onclick="toggleAccordion('forecasttwo')" class="w-full px-4 py-3 bg-indigo-500 text-white flex justify-between items-center">
+                Services Used in HobbyTap🤝
+                <svg id="icon-forecasttwo" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div id="content-forecasttwo" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
+                <ul class="mt-2 list-disc list-inside space-y-1">
+                    <li><strong>api.jikan.moe</strong> – Fetch anime list data</li>
+                    <li><strong>jokeapi.dev</strong> – Random types of jokes</li>
+                    <li><strong>catfact.ninja</strong> – Fetch interesting cat facts</li>
+                    <li><strong>Open-Meteo API</strong> – Live weather info</li>
                 </ul>
 
             </div>
