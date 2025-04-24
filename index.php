@@ -65,6 +65,57 @@
         </div>
     </section>
 
+
+    <!-- Weather Section -->
+    <div class="max-w-xl mx-auto mt-6 space-y-4">
+
+        <!-- Accordion 1: Temperature -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button onclick="toggleAccordion('temp')" class="w-full px-4 py-3 bg-blue-500 text-white flex justify-between items-center">
+                Temperature Info
+                <svg id="icon-temp" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div id="content-temp" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
+                <p>🌡️ Temperature: <strong><?php echo $temperature; ?>°C</strong></p>
+                <p>🥵 Feels Like: <strong><?php echo $feelsLike; ?>°C</strong></p>
+            </div>
+        </div>
+
+        <!-- Accordion 2: Wind -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button onclick="toggleAccordion('wind')" class="w-full px-4 py-3 bg-green-500 text-white flex justify-between items-center">
+                Wind Info
+                <svg id="icon-wind" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div id="content-wind" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
+                <p>💨 Speed: <strong><?php echo $windSpeed; ?> km/h</strong></p>
+                <p>🧭 Direction: <strong><?php echo $windDirection; ?>°</strong></p>
+            </div>
+        </div>
+
+        <!-- Accordion 3: Forecast -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button onclick="toggleAccordion('forecast')" class="w-full px-4 py-3 bg-purple-500 text-white flex justify-between items-center">
+                Forecast Info
+                <svg id="icon-forecast" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div id="content-forecast" class="max-h-0 overflow-hidden transition-all duration-500 bg-white text-gray-700 px-4 py-3 space-y-2">
+                <p>🔮 Forecast: <strong><?php echo $forecast; ?></strong></p>
+                <p>🌞 UV Index: <strong><?php echo $uvIndex; ?></strong></p>
+                <p>💧 Humidity: <strong><?php echo $humidity; ?>%</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+
+
     <?php
     date_default_timezone_set('Asia/Manila'); // 🇵🇭 Set to Philippine time zone
 
@@ -143,6 +194,15 @@
 
         setInterval(updateClock, 1000); // update every second
         updateClock(); // run on page load
+
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            content.classList.toggle('max-h-0');
+            content.classList.toggle('max-h-96');
+            icon.classList.toggle('rotate-180');
+        }
     </script>
 
 </body>
