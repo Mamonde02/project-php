@@ -64,6 +64,15 @@ $url = $data["data"][0]["url"];
                 id="searchInput"
                 placeholder="Search by title..."
                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+
+            <select
+                id="typeFilter"
+                class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+                <option value="">All Types</option>
+                <option value="TV">TV</option>
+                <option value="Movie">Movie</option>
+                <option value="TV Special">TV Special</option>
+            </select>
         </div>
 
         <h1 class="text-3xl font-bold text-center mb-8">Anime List Collection</h1>
@@ -72,7 +81,10 @@ $url = $data["data"][0]["url"];
 
             <?php foreach ($animes as $anime): ?>
                 <!-- <div class="bg-white shadow-md rounded-lg overflow-hidden"> -->
-                <div class="anime-card bg-white shadow-md rounded-lg overflow-hidden" data-title="<?php echo strtolower($anime['title']); ?>">
+                <div
+                    class="anime-card bg-white shadow-md rounded-lg overflow-hidden"
+                    data-title="<?php echo strtolower($anime['title']); ?>"
+                    data-type="<?php echo $anime['type']; ?>">
                     <!-- <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200?text=Watch+1" alt="Watch 1"> -->
                     <img class="w-full h-48 object-cover" src=<?php echo $anime["images"]["jpg"]["image_url"] ?> alt="Watch Anime 1">
                     <div class="p-4">
@@ -100,18 +112,28 @@ $url = $data["data"][0]["url"];
 
     <script>
         const searchInput = document.getElementById('searchInput');
+        const typeFilter = document.getElementById('typeFilter');
         const animeCards = document.querySelectorAll('.anime-card');
 
-        searchInput.addEventListener('input', () => {
+        function applyFilters() {
             const query = searchInput.value.toLowerCase();
+            const selectedType = typeFilter.value;
 
             animeCards.forEach(card => {
                 const title = card.getAttribute('data-title');
-                card.style.display = title.includes(query) ? 'block' : 'none';
+                const type = card.getAttribute('data-type');
+
+                const matchesTitle = title.includes(query);
+                const matchesType = selectedType === "" || type === selectedType;
+
+                card.style.display = matchesTitle && matchesType ? 'block' : 'none';
             });
-        });
+        }
+
+        searchInput.addEventListener('input', applyFilters);
+        typeFilter.addEventListener('change', applyFilters);
     </script>
-    
+
 </body>
 
 </html>
