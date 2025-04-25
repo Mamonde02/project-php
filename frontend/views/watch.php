@@ -58,12 +58,21 @@ $url = $data["data"][0]["url"];
     <?php include('components/navbar.php'); ?>
 
     <div class="container mx-auto px-4 py-10">
+        <div class="max-w-md mx-auto mb-6">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by title..."
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+        </div>
+
         <h1 class="text-3xl font-bold text-center mb-8">Anime List Collection</h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
             <?php foreach ($animes as $anime): ?>
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <!-- <div class="bg-white shadow-md rounded-lg overflow-hidden"> -->
+                <div class="anime-card bg-white shadow-md rounded-lg overflow-hidden" data-title="<?php echo strtolower($anime['title']); ?>">
                     <!-- <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200?text=Watch+1" alt="Watch 1"> -->
                     <img class="w-full h-48 object-cover" src=<?php echo $anime["images"]["jpg"]["image_url"] ?> alt="Watch Anime 1">
                     <div class="p-4">
@@ -89,6 +98,20 @@ $url = $data["data"][0]["url"];
         </div>
     </div>
 
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const animeCards = document.querySelectorAll('.anime-card');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+
+            animeCards.forEach(card => {
+                const title = card.getAttribute('data-title');
+                card.style.display = title.includes(query) ? 'block' : 'none';
+            });
+        });
+    </script>
+    
 </body>
 
 </html>
