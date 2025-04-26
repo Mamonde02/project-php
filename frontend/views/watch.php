@@ -130,7 +130,14 @@ $url = $data["data"][0]["url"];
             });
         }
 
-        searchInput.addEventListener('input', applyFilters);
+        let debounceTimer;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                applyFilters();
+            }, 1000); // 1 second delay
+        });
+
         typeFilter.addEventListener('change', applyFilters);
     </script>
 
