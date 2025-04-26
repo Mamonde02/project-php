@@ -58,16 +58,16 @@ $url = $data["data"][0]["url"];
     <?php include('components/navbar.php'); ?>
 
     <div class="container mx-auto px-4 py-10">
-        <div class="max-w-md mx-auto mb-6">
+        <div class="max-w-md mx-auto mb-6 flex space-x-4">
             <input
                 type="text"
                 id="searchInput"
                 placeholder="Search by title..."
-                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+                class="px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-indigo-100">
 
             <select
                 id="typeFilter"
-                class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+                class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-indigo-100">
                 <option value="">All Types</option>
                 <option value="TV">TV</option>
                 <option value="Movie">Movie</option>
@@ -75,7 +75,7 @@ $url = $data["data"][0]["url"];
             </select>
         </div>
 
-        <h1 class="text-3xl font-bold text-center mb-8">Anime List Collection</h1>
+        <h1 class="text-3xl font-bold text-center mb-8 text-indigo-500">Top Anime List Collection</h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
