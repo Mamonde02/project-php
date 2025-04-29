@@ -283,7 +283,7 @@ $userinfo = $stmt->fetchAll();
 
 
 
-    <!-- Weather API -->
+    <!-- Weather API & Cat API -->
     <div class="container-fluid d-flex flex-column align-items-center gap-8">
         <?php
         $lat = "10.3157"; // Latitude for Cebu
@@ -363,14 +363,40 @@ $userinfo = $stmt->fetchAll();
         $url = "https://catfact.ninja/fact";
 
         // Fetch API response
-        $response = file_get_contents($url);
+        $responseCat = file_get_contents($url);
 
         // Convert JSON to PHP array
-        $data = json_decode($response, true);
+        $data = json_decode($responseCat, true);
 
         // Display random cat fact
         // echo "Cat Fact: " . $data['fact'];
+
+        // Check if the responseCat is valid
+        if ($responseCat === FALSE) {
+            $errorcat = "Failed to connect to the Cat fact API.";
+            $data = "N/A";
+        } else {
+            // Fetch API responseCat
+            $responseCat = file_get_contents($url);
+
+            $data = json_decode($responseCat, true);
+
+            // Check if temperature data exists
+            if (isset($data)) {
+
+                $errorcat = "";
+            } else {
+                $temp = "N/A";
+                $errorcat = "No Cat API available at the moment.";
+            }
+        }
         ?>
+
+        <?php if ($errorcat): ?>
+            <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 max-w-md mx-auto text-center">
+                <?php echo $errorcat; ?>
+            </div>
+        <?php endif; ?>
 
         <!-- // reload for cat fact -->
         <!-- // display cat fact -->
