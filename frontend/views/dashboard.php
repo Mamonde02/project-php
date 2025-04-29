@@ -290,18 +290,19 @@ $userinfo = $stmt->fetchAll();
         $lon = "123.8854"; // Longitude for Cebu
         $url = "https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&current_weather=true";
 
-        // Fetch API response
-        $response = file_get_contents($url);
+        // Initialize cURL session
+        $ch = curl_init();
 
-        // // Convert JSON to PHP array
-        // $data = json_decode($response, true);
+        // Set options
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        // // Extract temperature
-        // $temp = $data['current_weather']['temperature'];
+        // Execute cURL request
+        $response = curl_exec($ch);
 
-        // Check if the response is valid
-        if ($response === FALSE) {
-            $error = "Failed to connect to the weather API.";
+        // Check for errors connections
+        if (curl_errno($ch)) {
+            $error = "Failed to connect to the weather API: " . curl_error($ch);
             $temp = "N/A";
         } else {
             $data = json_decode($response, true);
@@ -316,8 +317,11 @@ $userinfo = $stmt->fetchAll();
             }
         }
 
+        // Close cURL session
+        curl_close($ch);
+
         echo "<h4>Weather Report:</h4>";
-        echo "<h5>Current temperature: Manila " . $temp . "°C</h5>";
+        echo "<h5>Current temperature: Cebu " . $temp . "°C</h5>";
         ?>
 
         <!-- Optional: Show error if any -->
@@ -363,17 +367,26 @@ $userinfo = $stmt->fetchAll();
         $url = "https://catfact.ninja/fact";
 
         // Fetch API response
-        $responseCat = file_get_contents($url);
+        // $responseCat = file_get_contents($url);
+        $ch = curl_init();
+
+        // // Set options
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // // Execute cURL request
+        $response = curl_exec($ch);
 
         // Convert JSON to PHP array
-        $data = json_decode($responseCat, true);
+        // $data = json_decode($responseCat, true);
 
         // Display random cat fact
         // echo "Cat Fact: " . $data['fact'];
 
         // Check if the responseCat is valid
-        if ($responseCat === FALSE) {
-            $errorcat = "Failed to connect to the Cat fact API.";
+        if (curl_errno($ch)) {
+            // $errorcat = "Failed to connect to the Cat fact API.";
+            $errorcat = "Failed to connect to the Cat fact API: " . curl_error($ch);
             $data = "N/A";
         } else {
             // Fetch API responseCat
