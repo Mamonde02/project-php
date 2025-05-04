@@ -6,6 +6,13 @@ if (isset($_SESSION['user_id'])) {
     header("Location: dashboard.php");
     exit();
 }
+
+
+if (isset($_SESSION['successNewuser'])) {
+    $alert_message = $_SESSION['successNewuser'];
+    $alert_type = "success";
+    unset($_SESSION['successNewuser']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +57,15 @@ if (isset($_SESSION['user_id'])) {
         <button type="submit" name="login">Login</button>
     </form>
     <a href="signup.php">Don't have an account? Sign up</a> -->
+
+    <?php if (isset($alert_message)): ?>
+        <div class="alert alert-<?php echo $alert_type; ?> alert-dismissible fade show" role="alert">
+            <?php echo $alert_message; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($alert_message, $alert_type); ?>
+    <?php endif; ?>
+
 
 
     <!-- Display success or error messages -->
