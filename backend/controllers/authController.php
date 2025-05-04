@@ -76,6 +76,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
         // header("Location: " . $baseUrl . "frontend/views/login.php");
 
+        $_SESSION['successNewuser'] = "You have successfully created an account. 🎉";
+        // $_SESSION['message_type'] = "success";
+
         header("Location: " . BASE_URL . "frontend/views/login.php");
         exit();
     } else {
