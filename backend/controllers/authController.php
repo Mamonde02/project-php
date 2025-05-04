@@ -25,6 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
         // header("Location: " . $baseUrl . "frontend/views/signup.php");
 
+        $_SESSION['error'] = "Passwords do not match!";
+
         header("Location: " . BASE_URL . "frontend/views/signup.php");
         exit();
     }
@@ -58,6 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/php-auth/';
         // $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/';
         // header("Location: " . $baseUrl . "frontend/views/signup.php");
+
+        $_SESSION['error'] = "Email already exists!";
 
         header("Location: " . BASE_URL . "frontend/views/signup.php");
         exit();
