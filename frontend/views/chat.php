@@ -8,8 +8,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // fetch all the users using select element dropdown
-$stmt = $pdo->prepare("SELECT * FROM users");
-$stmt->execute();
+// remove the current user or logged-in user
+// $stmt = $pdo->prepare("SELECT * FROM users");
+// $stmt->execute();
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id != ?");
+$stmt->execute([$_SESSION['user_id']]);
 $users = $stmt->fetchAll();
 
 // printf("<pre>%s</pre>", var_export($users, true));
