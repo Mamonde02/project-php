@@ -12,7 +12,7 @@ $stmt = $pdo->prepare("SELECT * FROM users");
 $stmt->execute();
 $users = $stmt->fetchAll();
 
-printf("<pre>%s</pre>", var_export($users, true));
+// printf("<pre>%s</pre>", var_export($users, true));
 
 $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
 ?>
@@ -71,8 +71,8 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
                 <?php endforeach; ?>
             </select>
 
-            <label for="receiver_id" class="form-label">Chat with User ID:</label>
-            <input type="text" id="receiver_id" class="form-control" placeholder="Enter Receiver ID">
+            <!-- <label for="receiver_id" class="form-label">Chat with User ID:</label>
+            <input type="text" id="receiver_id" class="form-control" placeholder="Enter Receiver ID"> -->
         </div>
 
         <div id="chat-box" class="border p-3"></div>
