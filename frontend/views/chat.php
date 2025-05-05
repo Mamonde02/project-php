@@ -1,4 +1,5 @@
 <?php
+require_once "../../backend/config/baseconfig.php";
 session_start();
 if (!isset($_SESSION['user_id'])) {
     echo "You must be logged in to access the chat.";
@@ -74,7 +75,7 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
 
             console.log("Fetching messages for Receiver ID:", receiver_id);
 
-            $.get('../../backend/controllers/getMessages.php', {
+            $.get('<?php echo BASE_URL; ?>backend/controllers/getMessages.php', {
                 receiver_id
             }, function(data) {
                 console.log("Response from getMessages.php:", data);
