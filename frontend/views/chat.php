@@ -1,10 +1,18 @@
 <?php
 require_once "../../backend/config/baseconfig.php";
+require_once "../../backend/config/database.php";
 session_start();
 if (!isset($_SESSION['user_id'])) {
     echo "You must be logged in to access the chat.";
     exit();
 }
+
+// fetch all the users using select element dropdown
+$stmt = $pdo->prepare("SELECT * FROM users");
+$stmt->execute();
+$users = $stmt->fetchAll();
+
+printf("<pre>%s</pre>", var_export($users, true));
 
 $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
 ?>
@@ -54,6 +62,15 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
         <h2>Chat</h2>
 
         <div class="mb-3">
+            <!-- fetch all the users using select element dropdown -->
+            <label for="receiver_id" class="form-label">Chat with User:</label>
+            <select id="receiver_id" class="form-select">
+                <option value="">Select Users</option>
+                <?php foreach ($users as $user): ?>
+                    <option value="<?php echo $user['id']; ?>"><?php echo $user['username']; ?></option>
+                <?php endforeach; ?>
+            </select>
+
             <label for="receiver_id" class="form-label">Chat with User ID:</label>
             <input type="text" id="receiver_id" class="form-control" placeholder="Enter Receiver ID">
         </div>
