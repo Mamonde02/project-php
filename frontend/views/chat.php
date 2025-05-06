@@ -60,10 +60,9 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
     </style>
 </head>
 
-<body>
+<body class="bg-gray-100">
+    <?php include('components/navbar.php'); ?>
     <div class="container mt-4">
-        <h2>Chat</h2>
-
         <div class="mb-3">
             <!-- fetch all the users using select element dropdown -->
             <label for="receiver_id" class="form-label">Chat with User:</label>
@@ -134,7 +133,7 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
                 });
             } else {
                 console.warn("Cannot send an empty message or invalid receiver ID.");
-                alert('Cannot send an empty message');
+                alert('Please select a user to chat with.');
             }
         });
 
