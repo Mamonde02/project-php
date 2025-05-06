@@ -134,8 +134,22 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
                 });
             } else {
                 console.warn("Cannot send an empty message or invalid receiver ID.");
+                alert('Cannot send an empty message');
             }
         });
+
+        // Add logic to toggle send button visibility
+        $('#message').on('input', function() {
+            let message = $(this).val().trim();
+            if (message === '') {
+                $('#sendBtn').prop('disabled', true); // Disable the button
+            } else {
+                $('#sendBtn').prop('disabled', false); // Enable the button
+            }
+        });
+
+        // Initially disable the send button
+        $('#sendBtn').prop('disabled', true);
 
         setInterval(fetchMessages, 3000); // Refresh messages every 3 seconds
     </script>
