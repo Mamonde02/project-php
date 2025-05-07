@@ -10,12 +10,14 @@ function fetchMessages() {
         console.log("Response from getMessages.php:", data);
 
         let messages = JSON.parse(data);
+        console.log("Testing Parsed messages:", messages);
+
         let chatBox = $('#chat-box');
         chatBox.empty();
 
         messages.forEach(msg => {
             let messageClass = (msg.sender_id == loggedInUserId) ? "sent" : "received";
-            chatBox.append(`<div class="message ${messageClass}"><strong>${msg.sender_id}:</strong> ${msg.message}</div>`);
+            chatBox.append(`<div class="message ${messageClass}"><strong>${msg.sender_username}:</strong> ${msg.message}</div>`);
         });
 
         chatBox.scrollTop(chatBox.prop("scrollHeight"));
