@@ -13,7 +13,20 @@ $receiver_id = $_GET['receiver_id'] ?? '';
 
 error_log("getMessages.php - Fetching messages between Sender: $sender_id and Receiver: $receiver_id");
 
-$stmt = $pdo->prepare("SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY timestamp ASC");
+$sql = "
+    SELECT 
+        m.*, 
+        sender.id AS sender_user_id, sender.username AS sender_username, 
+        receiver.id AS receiver_user_id, receiver.username AS receiver_username 
+    FROM messages m
+    JOIN users sender ON m.sender_id = sender.id
+    JOIN users receiver ON m.receiver_id = receiver.id
+    WHERE (m.sender_id = ? AND m.receiver_id = ?) OR (m.sender_id = ? AND m.receiver_id = ?)
+    ORDER BY m.timestamp ASC
+";
+
+// $stmt = $pdo->prepare("SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY timestamp ASC");
+$stmt = $pdo->prepare($sql);
 $stmt->execute([$sender_id, $receiver_id, $receiver_id, $sender_id]);
 
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
