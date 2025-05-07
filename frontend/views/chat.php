@@ -86,6 +86,14 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
     </div>
 
     <script>
+        const loggedInUserId = <?php echo json_encode($logged_in_user); ?>;
+        const BASE_URL = <?php echo json_encode(BASE_URL); ?>;
+        // const BASE_URL = '<?php echo BASE_URL; ?>backend/controllers/getMessages.php';
+    </script>
+
+    <script src="../js/chat.js"></script>
+
+    <!-- <script>
         let loggedInUserId = <?php echo json_encode($logged_in_user); ?>;
 
         function fetchMessages() {
@@ -151,7 +159,7 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
         $('#sendBtn').prop('disabled', true);
 
         setInterval(fetchMessages, 3000); // Refresh messages every 3 seconds
-    </script>
+    </script> -->
 </body>
 
 </html>
