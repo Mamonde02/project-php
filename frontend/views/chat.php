@@ -45,6 +45,27 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
             max-width: 70%;
         }
 
+        .message-time {
+            font-size: 0.8em;
+            color: #888;
+            width: 8.125rem;
+        }
+
+        .sentdatetime {
+            background-color: rgba(0, 123, 255, 0.71);
+            color: white;
+            text-align: right;
+            margin-left: auto;
+            border-radius: 6px;
+        }
+
+        .receiveddatetime {
+            background-color: #e5e5e5;
+            color: black;
+            text-align: left;
+            border-radius: 6px;
+        }
+
         .sent {
             background-color: #007bff;
             color: white;
