@@ -27,7 +27,10 @@ function fetchMessages() {
             chatBox.append(`<div class="message-time ${messageClassdate}">${messageTime} (${messageDate})</div>`);
         });
 
-        chatBox.scrollTop(chatBox.prop("scrollHeight"));
+        // chatBox.scrollTop(chatBox.prop("scrollHeight"));
+        // chatBox.animate({ scrollTop: chatBox.prop("scrollHeight") }, 1000);
+
+
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.error("AJAX error fetching messages:", textStatus, errorThrown);
     });
