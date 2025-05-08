@@ -17,13 +17,14 @@ function fetchMessages() {
 
         messages.forEach(msg => {
             let messageClass = (msg.sender_id == loggedInUserId) ? "sent" : "received";
+            let messageClassdate = (msg.sender_id == loggedInUserId) ? "sentdatetime" : "receiveddatetime";
+
             let messageTime = new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             let messageDate = new Date(msg.timestamp).toLocaleDateString([], { year: 'numeric', month: '2-digit', day: '2-digit' });
 
 
             chatBox.append(`<div class="message ${messageClass}"><strong>${msg.sender_username}:</strong> ${msg.message}</div>`);
-            chatBox.append(`<small class="message"><strong>date: ${messageDate}</strong></small>`);
-            chatBox.append(`<small class="message"><strong>time: ${messageTime}</strong></small>`);
+            chatBox.append(`<div class="message-time ${messageClassdate}">${messageTime} (${messageDate})</div>`);
         });
 
         chatBox.scrollTop(chatBox.prop("scrollHeight"));
