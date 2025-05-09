@@ -42,7 +42,9 @@ $logged_in_user = $_SESSION['user_id']; // Get the logged-in user's ID
             padding: 8px;
             border-radius: 5px;
             margin-bottom: 5px;
-            max-width: 70%;
+            /* max-width: 70%; */
+            width: fit-content;
+            border-radius: 8px;
         }
 
         .message-time {
