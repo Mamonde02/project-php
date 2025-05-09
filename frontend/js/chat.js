@@ -2,15 +2,15 @@ function fetchMessages() {
     let receiver_id = $('#receiver_id').val();
     if (!receiver_id) return;
 
-    console.log("Fetching messages for Receiver ID:", receiver_id);
+    // console.log("Fetching messages for Receiver ID:", receiver_id);
 
     $.get(`${BASE_URL}backend/controllers/getMessages.php`, {
         receiver_id
     }, function (data) {
-        console.log("Response from getMessages.php:", data);
+        // console.log("Response from getMessages.php:", data);
 
         let messages = JSON.parse(data);
-        console.log("Testing Parsed messages:", messages);
+        // console.log("Testing Parsed messages:", messages);
 
         let chatBox = $('#chat-box');
         chatBox.empty();
@@ -40,14 +40,14 @@ $('#sendBtn').click(function () {
     let message = $('#message').val();
     let receiver_id = $('#receiver_id').val();
 
-    console.log("Sending message:", message, "to Receiver ID:", receiver_id);
+    // console.log("Sending message:", message, "to Receiver ID:", receiver_id);
 
     if (message.trim() !== '' && receiver_id) {
         $.post(`${BASE_URL}backend/controllers/sendMessage.php`, {
             receiver_id,
             message
         }, function () {
-            console.log("Message sent successfully");
+            // console.log("Message sent successfully");
             $('#message').val('');
             fetchMessages();
         }).fail(function (jqXHR, textStatus, errorThrown) {
