@@ -211,7 +211,7 @@
         © <?= date("Y") ?> HobbyTapp. All rights reserved.
     </footer>
 
-    <script>
+    <!-- <script>
         function updateClock() {
             const now = new Date();
             const options = {
@@ -236,7 +236,14 @@
             content.classList.toggle('max-h-96');
             icon.classList.toggle('rotate-180');
         }
-    </script>
+    </script> -->
+
+    <?php
+    // Include the JavaScript file
+    echo '<script src="./frontend/js/index.js"></script>';
+    ?>
+
+    <script scr="./frontend/js/index.js"></script>
 
 </body>
 
