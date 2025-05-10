@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once "../../backend/config/database.php";
+require_once "../../backend/models/message.php";
+
+$messageModel = new Message($pdo);
 
 if (!isset($_SESSION['user_id'])) {
     error_log("getMessages.php - User session not set.");
@@ -26,10 +29,13 @@ $sql = "
 ";
 
 // $stmt = $pdo->prepare("SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY timestamp ASC");
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$sender_id, $receiver_id, $receiver_id, $sender_id]);
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([$sender_id, $receiver_id, $receiver_id, $sender_id]);
 
-$messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$messages = $messageModel->getMessages($sender_id, $receiver_id);
+
 
 if (!$messages) {
     error_log("getMessages.php - No messages found.");
