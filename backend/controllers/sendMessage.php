@@ -22,26 +22,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
             echo json_encode([
                 "status" => "success",
                 "message" => "Message sent successfully.",
+                "data" => [
+                    "sender_id" => $sender_id,
+                    "receiver_id" => $receiver_id,
+                    "message" => $message
+                ],
             ]);
         } else {
             error_log("Failed to insert message.");
             // return an error response
             echo json_encode([
                 "status" => "error",
-                "message" => "Failed to send message."
+                "message" => "Failed to send message.",
+                "data" => [
+                    "sender_id" => $sender_id,
+                    "receiver_id" => $receiver_id,
+                    "message" => $message
+                ],
+                "session" => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+
             ]);
         }
     } else {
         error_log("sendMessage.php - Message is empty.");
         echo json_encode([
             "status" => "error",
-            "message" => "Message cannot be empty."
+            "message" => "Message cannot be empty.",
+            "data" => [],
+            "session" => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ]);
     }
 } else {
     error_log("sendMessage.php - Invalid request or session not set.");
     echo json_encode([
         "status" => "error",
-        "message" => "Invalid request."
+        "message" => "Invalid request.",
+        "data" => [],
+        "session" => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
     ]);
 }
