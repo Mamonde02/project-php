@@ -40,6 +40,26 @@ class User
         return $stmt->fetch();
     }
 
+    public function changePassword($id, $password)
+    {
+        $stmt = $this->pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+        return $stmt->execute([$password, $id]);
+    }
+
+    public function getUserById($id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
+    public function getAllUsers()
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public function delete($id)
     {
         $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
