@@ -5,6 +5,7 @@ require_once "../../backend/config/baseconfig.php";
 
 if (!isset($_SESSION['user_id'])) {
     echo "User ID is not set in session. Please log in again.";
+    header("Location: login.php");
     exit();
 }
 
