@@ -26,26 +26,37 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <?php include('components/sidebar.php'); ?>
 
-    <div class="ml-64 mt-16 p-4 flex justify-center items-center">
+    <div class="ml-64 mt-16 p-6 flex justify-center items-center min-h-[80vh]">
         <!-- Joke Card -->
-        <div class="bg-white w-full max-w-md rounded-xl shadow-lg overflow-hidden flex flex-col">
-            <div class="bg-blue-500 h-56 w-full"></div>
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden flex flex-col transition hover:shadow-blue-200 duration-300 ease-in-out">
 
-            <div class="p-6 text-center flex-1">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">Joke of the Day?</h2>
-                <p id="joke" class="text-gray-600 mb-4">Waiting for a Joke</p>
-
-                <p id="setup" class="text-gray-600"></p>
-                <p id="delivery" class="text-gray-600"></p>
-                <p id="type" class="text-sm text-gray-400"></p>
-                <p id="id" class="text-sm text-gray-400"></p>
+            <!-- Header with Gradient -->
+            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-48 w-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white animate-bounce" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 3.09 1.38 5.84 3.55 7.68-.02-.59-.05-1.5.01-2.15.06-.68.39-1.35.86-1.83-2.04-.23-3.95-1.01-3.95-4.49 0-1 .36-1.82.95-2.46-.1-.23-.42-1.15.09-2.4 0 0 .77-.25 2.52.95a8.54 8.54 0 0 1 4.6 0c1.75-1.2 2.52-.95 2.52-.95.5 1.25.19 2.17.09 2.4.59.64.95 1.46.95 2.46 0 3.5-1.92 4.25-3.75 4.48.6.52 1.03 1.4 1.03 2.83 0 2.05-.02 3.7-.02 4.2 0 .23.15.5.55.42A10.006 10.006 0 0 0 22 12c0-5.52-4.48-10-10-10z" />
+                </svg>
             </div>
 
-            <div class="px-6 py-4 bg-blue-50 flex justify-between items-center border-t">
-                <p id="category" class="text-xs text-gray-500 uppercase tracking-wide"></p>
+            <!-- Joke Content -->
+            <div class="p-6 text-center space-y-3 flex-1">
+                <h2 class="text-2xl font-bold text-gray-800">Joke of the Day</h2>
+                <p id="joke" class="text-gray-700 italic">Waiting for a Joke...</p>
+
+                <p id="setup" class="text-gray-600 font-medium"></p>
+                <p id="delivery" class="text-gray-600 font-medium"></p>
+
+                <div class="text-xs text-gray-400 space-x-2 mt-2">
+                    <span id="type"></span>
+                    <span id="id"></span>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="px-6 py-4 bg-gray-50 border-t flex justify-between items-center">
+                <p id="category" class="text-xs text-indigo-500 font-semibold uppercase tracking-wide"></p>
                 <button id="jokeButton"
-                    class="bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold uppercase px-4 py-2 rounded-md transition">
-                    Click me for joke
+                    class="bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold uppercase px-4 py-2 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                    New Joke
                 </button>
             </div>
         </div>
