@@ -7,7 +7,8 @@ require_once "../../backend/config/database.php";
 // Debug session
 if (!isset($_SESSION['user_id'])) {
     echo "User ID is not set in session. Please log in again.";
-    header("Location: login.php");
+    // header("Location: login.php");
+    header("Location: access_denied.php");
     exit();
 }
 
