@@ -1,4 +1,5 @@
 <?php
+require_once 'baseconfig.php';
 // $host = "localhost";
 // $dbname = "auth_system";
 // $dbusername = "root";
@@ -17,7 +18,16 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "✅ Server is running: Database connected successfully!";
 } catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
+    // die("Connection failed: " . $e->getMessage());
+
+    // die("<script>alert('❌ Server is down: Database connection failed!');</script>" . $e->getMessage());
+    // echo ("<script>alert('❌ Server is down: Database connection failed!');</script>");
+    // echo "❌ Server is down: Database connection failed!";
+    $_SESSION['databaseError'] = "Database connection failed.";
+    $_SESSION['toast_error'] = "Database connection failed. Error:";
+    // header("Location: " . BASE_URL . "index.php");
+    // echo "<script>alert('❌ Server is down: Database connection failed!');</script>";
+
 }
 
 
