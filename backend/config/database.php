@@ -22,12 +22,8 @@ try {
 
     // die("<script>alert('❌ Server is down: Database connection failed!');</script>" . $e->getMessage());
     // echo ("<script>alert('❌ Server is down: Database connection failed!');</script>");
-    // echo "❌ Server is down: Database connection failed!";
-    $_SESSION['databaseError'] = "Database connection failed.";
-    $_SESSION['toast_error'] = "Database connection failed. Error:";
     // header("Location: " . BASE_URL . "index.php");
-    // echo "<script>alert('❌ Server is down: Database connection failed!');</script>";
-
+    echo "<script>alert('❌ Server is down: Database connection failed!');</script>";
 }
 
 
