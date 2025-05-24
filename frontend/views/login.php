@@ -15,11 +15,6 @@ if (isset($_SESSION['successNewuser'])) {
 }
 
 
-if (isset($_SESSION['databaseError'])) {
-    $alert_message = $_SESSION['databaseError'];
-    $alert_type = "danger";
-    unset($_SESSION['databaseError']);
-}
 ?>
 
 <!DOCTYPE html>
@@ -74,39 +69,6 @@ if (isset($_SESSION['databaseError'])) {
     <?php endif; ?>
 
 
-    <!-- ✅ Bootstrap Toast -->
-    <!-- <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="loginToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    <?php
-                    if (isset($_SESSION['toast_error'])) {
-                        echo $_SESSION['toast_error'];
-                        unset($_SESSION['toast_error']); // Remove message after showing
-                    }
-                    ?>
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="loginToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: 400px; min-height: 80px; font-size: 1.3rem;">
-            <div class="d-flex">
-                <div class="toast-body">
-                    <?php
-                    if (isset($_SESSION['toast_error'])) {
-                        echo $_SESSION['toast_error'];
-                        unset($_SESSION['toast_error']); // Remove message after showing
-                    }
-                    ?>
-                    <small>Database error</small>
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    </div>
 
 
     <!-- Display success or error messages -->
@@ -199,16 +161,7 @@ if (isset($_SESSION['databaseError'])) {
             </button>
         </div> -->
     </form>
-    <script>
-        // Show the toast when the page loads
-        window.onload = function() {
-            var toastEl = document.getElementById('loginToast');
-            var toast = new bootstrap.Toast(toastEl, {
-                delay: 10000
-            });
-            toast.show();
-        };
-    </script>
+
 
 
     <!-- Bootstrap JS -->
