@@ -4,6 +4,15 @@ require_once "../config/database.php";
 require_once "../models/user.php";
 require_once "../config/baseconfig.php";
 
+
+// Check if the PDO connection is established
+if (!$pdo) {
+    // die("Connection failed: " . $e->getMessage());
+    echo ("<script>alert('❌ Server is down: Database connection failed!');</script>" . $e->getMessage());
+    header("Location: " . BASE_URL . "frontend/views/error500.php");
+    exit();
+}
+
 $userModel = new User($pdo);
 
 // SIGNUP
