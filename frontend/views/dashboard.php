@@ -202,6 +202,7 @@ $userinfo = $stmt->fetchAll();
                                 type="button" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal"
                                 type="submit"
+                                onclick="openDeleteForm(<?php echo $note['id']; ?>)"
                                 name="delete_note">Delete me
                             </button>
                         </form>
@@ -251,12 +252,18 @@ $userinfo = $stmt->fetchAll();
 
     <script>
         // Function to set the delete note ID in the modal
-        $('#deleteModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget); // Button that triggered the modal
-            var noteId = button.closest('form').find('input[name="note_id"]').val(); // Get note ID from the form
-            var modal = $(this);
-            modal.find('#deleteNoteId').val(noteId); // Set the note ID in the modal
-        });
+        // $('#deleteModal').on('show.bs.modal', function(event) {
+        //     var button = $(event.relatedTarget); // Button that triggered the modal
+        //     var noteId = button.closest('form').find('input[name="note_id"]').val(); // Get note ID from the form
+        //     var modal = $(this);
+        //     modal.find('#deleteNoteId').val(noteId); // Set the note ID in the modal
+        // });
+
+        function openDeleteForm(noteId) {
+            document.getElementById('deleteNoteId').value = noteId;
+            $('#deleteModal').modal('show');
+
+        }
     </script>
 
 
