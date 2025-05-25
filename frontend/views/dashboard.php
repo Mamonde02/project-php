@@ -118,27 +118,6 @@ $userinfo = $stmt->fetchAll();
     <!-- <h4>Personal Email Account, <?php echo $_SESSION['useremail']; ?></h4> -->
     <!-- <h4>User ID, <?php echo $_SESSION['user_id']; ?></h4> -->
 
-
-    <!-- Add note == [POST] -->
-    <div class="container-fluid">
-        <br>
-        <h3>Add Note</h3>
-        <form action="../../backend/controllers/notesController.php" method="POST">
-            <input class="form-control" type="text" name="title" placeholder="Title" required><br>
-
-            <!-- <input type="text" name="notetype" placeholder="Note Type" required><br> -->
-            <select class="form-select" aria-label="Default select example" name="notetype" required>
-                <option value="">Select Category Hobbies</option>
-                <option value="Anime">Anime</option>
-                <option value="Cat Facts">Cat Facts</option>
-                <option value="Jokes">Jokes</option>
-            </select><br>
-            <textarea class="form-control" name="comment" placeholder="Comment" required></textarea><br>
-            <button class="buttonDesign" type="submit" name="add_note">Add Note</button>
-        </form>
-    </div>
-
-
     <?php
     // Add notes
     if (isset($_GET["msg_success"])) {
@@ -241,23 +220,6 @@ $userinfo = $stmt->fetchAll();
     </table>
 
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <!-- <div class="container-fluid">
-            <br>
-            <h3>Add Note</h3>
-            <form action="../../backend/controllers/notesController.php" method="POST">
-                <input class="form-control" type="text" name="title" placeholder="Title" required><br>
-
-
-                <select class="form-select" aria-label="Default select example" name="notetype" required>
-                    <option value="">Select Category Hobbies</option>
-                    <option value="Anime">Anime</option>
-                    <option value="Cat Facts">Cat Facts</option>
-                    <option value="Jokes">Jokes</option>
-                </select><br>
-                <textarea class="form-control" name="comment" placeholder="Comment" required></textarea><br>
-                <button class="buttonDesign" type="submit" name="add_note">Add Note</button>
-            </form>
-        </div> -->
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
