@@ -249,6 +249,17 @@ $userinfo = $stmt->fetchAll();
     </div>
 
 
+    <script>
+        // Function to set the delete note ID in the modal
+        $('#deleteModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var noteId = button.closest('form').find('input[name="note_id"]').val(); // Get note ID from the form
+            var modal = $(this);
+            modal.find('#deleteNoteId').val(noteId); // Set the note ID in the modal
+        });
+    </script>
+
+
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
