@@ -197,7 +197,13 @@ $userinfo = $stmt->fetchAll();
                         <!-- Delete Form -->
                         <form action="../../backend/controllers/notesController.php" method="POST">
                             <input type="hidden" name="note_id" value="<?php echo $note['id']; ?>">
-                            <button class="buttonDelete" type="submit" name="delete_note">Delete</button>
+                            <button
+                                class="buttonDelete"
+                                type="button" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                                type="submit"
+                                name="delete_note">Delete me
+                            </button>
                         </form>
 
                         <!-- Update Button (Opens Update Form) -->
@@ -219,11 +225,35 @@ $userinfo = $stmt->fetchAll();
         <?php endforeach; ?>
     </table>
 
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body
+                    <p>Are you sure you want to delete this note?</p>
+                </div>
+                <div class=" modal-footer">
+                    <form action="../../backend/controllers/notesController.php" method="POST">
+                        <input type="hidden" name="note_id" id="deleteNoteId">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button class="buttonDelete" type="submit" name="delete_note">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Note</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Note</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
