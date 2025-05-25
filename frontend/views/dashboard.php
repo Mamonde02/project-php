@@ -203,7 +203,7 @@ $userinfo = $stmt->fetchAll();
                                 data-bs-target="#deleteModal"
                                 type="submit"
                                 onclick="openDeleteForm(<?php echo $note['id']; ?>)"
-                                name="delete_note">Delete me
+                                name="delete_note">Delete
                             </button>
                         </form>
 
@@ -235,14 +235,14 @@ $userinfo = $stmt->fetchAll();
                     <h5 class="modal-title" id="exampleModalLabel">Delete Note</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body
+                <div class="modal-body">
                     <p>Are you sure you want to delete this note?</p>
                 </div>
                 <div class=" modal-footer">
                     <form action="../../backend/controllers/notesController.php" method="POST">
                         <input type="hidden" name="note_id" id="deleteNoteId">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button class="buttonDelete" type="submit" name="delete_note">Delete</button>
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger" type="submit" name="delete_note">Delete</button>
                     </form>
                 </div>
             </div>
