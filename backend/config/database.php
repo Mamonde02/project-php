@@ -12,17 +12,18 @@ $port = getenv('DB_PORT') ?: 5432;
 
 try {
     // mysql driver
-    // $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
     // pgsql driver
-    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $dbusername, $dbpassword);
+    // $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "✅ Server is running: Database connected successfully!";
 } catch (PDOException $e) {
+    // Debugging line to check the connection error
     // die("Connection failed: " . $e->getMessage());
+    error_log("Database connection failed: " . $e->getMessage());
 
     // die("<script>alert('❌ Server is down: Database connection failed!');</script>" . $e->getMessage());
     // echo ("<script>alert('❌ Server is down: Database connection failed!');</script>");
-    // header("Location: " . BASE_URL . "index.php");
     header("Location: " . BASE_URL . "frontend/views/error500.php");
     exit();
 }
