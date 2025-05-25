@@ -168,7 +168,9 @@ $userinfo = $stmt->fetchAll();
 
     <!-- ✅ Bootstrap Toast -->
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="loginToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="loginToast" class="toast align-items-center text-white bg-primary border-0"
+            role="alert" aria-live="assertive" aria-atomic="true"
+            style="min-width: 400px; min-height: 80px; font-size: 1.3rem; box-shadow: 0 0 20px rgba(0,0,0,0.2);">
             <div class="d-flex">
                 <div class="toast-body">
                     <?php
